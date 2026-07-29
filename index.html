@@ -1,0 +1,3446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- AJOUT DE CHART.JS ICI -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+body{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    margin:0;
+    padding:0;
+    background:#eef3f8;
+    color:#2c3e50;
+}
+
+/* HERO */
+.hero-section{
+    background:linear-gradient(135deg,#0f4c81,#1f6fb2,#3498db);
+    color:#fff;
+    text-align:center;
+    padding:60px 20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+.hero-section h1{
+    margin:0;
+    font-size:3rem;
+    font-weight:700;
+}
+
+.hero-section p{
+    max-width:950px;
+    margin:25px auto 0;
+    line-height:1.9;
+    font-size:18px;
+}
+
+/* IMAGES */
+
+.image-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin:40px auto;
+    max-width:1200px;
+}
+
+.school-img{
+    width:30%;
+    min-width:280px;
+    height:240px;
+    object-fit:cover;
+    border-radius:18px;
+    box-shadow:0 12px 28px rgba(0,0,0,.18);
+    transition:.4s;
+}
+
+.school-img:hover{
+    transform:translateY(-8px) scale(1.03);
+}
+
+/* CONNEXION */
+
+.box{
+    width:92%;
+    max-width:420px;
+    margin:40px auto;
+    background:#fff;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.box h3{
+    text-align:center;
+    color:#0f4c81;
+    margin-bottom:25px;
+    font-size:24px;
+}
+
+/* INPUTS */
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    border:1px solid #d6d6d6;
+    border-radius:10px;
+    box-sizing:border-box;
+    font-size:15px;
+    transition:.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#1f6fb2;
+    box-shadow:0 0 10px rgba(31,111,178,.25);
+}
+
+/* BOUTONS */
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#0f4c81,#3498db);
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* DASHBOARD */
+
+#dashboard{
+    display:none;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 30px;
+    background:linear-gradient(90deg,#0f4c81,#3498db);
+    color:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+#welcome{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.topbar button{
+    width:auto;
+    background:#e74c3c;
+    padding:12px 25px;
+}
+
+.topbar button:hover{
+    background:#c0392b;
+}
+
+/* MENU */
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+    padding:25px;
+}
+
+/* CARTES */
+
+/* CARTES */
+
+.card{
+    color:#ffffff;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    font-weight:700;
+    font-size:17px;
+    line-height:1.5;
+    text-shadow:1px 1px 3px rgba(0,0,0,.45);
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+    border:2px solid rgba(255,255,255,.15);
+    transition:all .35s ease;
+    user-select:none;
+}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.05);
+    box-shadow:0 18px 35px rgba(0,0,0,.30);
+}
+
+/* COULEURS DES CARTES */
+
+.card:nth-child(1){
+    background:linear-gradient(135deg,#1565C0,#0D47A1);
+}
+
+.card:nth-child(2){
+    background:linear-gradient(135deg,#2E7D32,#1B5E20);
+}
+
+.card:nth-child(3){
+    background:linear-gradient(135deg,#6A1B9A,#4A148C);
+}
+
+.card:nth-child(4){
+    background:linear-gradient(135deg,#EF6C00,#E65100);
+}
+
+.card:nth-child(5){
+    background:linear-gradient(135deg,#C62828,#8E0000);
+}
+
+.card:nth-child(6){
+    background:linear-gradient(135deg,#00897B,#004D40);
+}
+
+.card:nth-child(7){
+    background:linear-gradient(135deg,#3949AB,#1A237E);
+}
+
+.card:nth-child(8){
+    background:linear-gradient(135deg,#AD1457,#880E4F);
+}
+
+.card:nth-child(9){
+    background:linear-gradient(135deg,#00838F,#006064);
+}
+
+.card:nth-child(10){
+    background:linear-gradient(135deg,#5D4037,#3E2723);
+}
+
+.card:nth-child(11){
+    background:linear-gradient(135deg,#283593,#1A237E);
+}
+
+.card:nth-child(12){
+    background:linear-gradient(135deg,#D81B60,#880E4F);
+}
+
+.card:nth-child(13){
+    background:linear-gradient(135deg,#00796B,#004D40);
+}
+
+.card:nth-child(14){
+    background:linear-gradient(135deg,#512DA8,#311B92);
+}
+
+.card:nth-child(15){
+    background:linear-gradient(135deg,#BF360C,#8D2600);
+}
+
+.card:nth-child(16){
+    background:linear-gradient(135deg,#0277BD,#01579B);
+}
+
+.card:nth-child(17){
+    background:linear-gradient(135deg,#4E342E,#3E2723);
+}
+
+.card:nth-child(18){
+    background:linear-gradient(135deg,#00695C,#004D40);
+}
+
+.card:nth-child(19){
+    background:linear-gradient(135deg,#4527A0,#311B92);
+}
+
+.card:nth-child(20){
+    background:linear-gradient(135deg,#B71C1C,#7F0000);
+}
+/* CONTENU */
+
+#content{
+    background:white;
+    margin:25px;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    min-height:350px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-section h1{
+    font-size:2rem;
+}
+
+.hero-section p{
+    font-size:16px;
+}
+
+.school-img{
+    width:95%;
+}
+
+.menu{
+    grid-template-columns:1fr;
+}
+
+.topbar{
+    flex-direction:column;
+    gap:15px;
+    text-align:center;
+}
+
+.topbar button{
+    width:100%;
+}
+
+#content{
+    margin:15px;
+    padding:20px;
+}
+
+}
+/* Style du panneau déroulant des notifications */
+#notification-panel {
+    display: none; /* Masqué par défaut */
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 300px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    z-index: 1000;
+    text-align: left;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Base : Empêche le dépassement horizontal */
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        width: 100%;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Rendre les images et les conteneurs responsives */
+    img, button, input, select, textarea {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Gestion des boutons pour occuper la largeur sur mobile */
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 12px !important;
+        cursor: pointer;
+    }
+
+    /* Tableaux : Scroll horizontal si nécessaire */
+    #resultat-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    /* Mise en page flexible pour les boutons */
+    div[style*="margin-bottom:20px"] {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Media Queries pour tablettes et ordinateurs */
+    @media (min-width: 600px) {
+        div[style*="margin-bottom:20px"] {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        button {
+            width: auto;
+        }
+    }
+
+    /* Taille de police adaptative */
+    @media (max-width: 480px) {
+        h3 { font-size: 1.2rem; }
+        body { font-size: 14px; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="hero-section">
+  <h1 style="font-size:3rem; font-weight:700; color:#ffffff; text-shadow:0 3px 8px rgba(0,0,0,0.45); margin-bottom:20px;">
+    Bienvenue sur <span style="color:#FFD700;">EIEM ERP</span>
+  </h1>
+
+  <p style="font-size:1.25rem; line-height:1.9; max-width:950px; margin:auto; color:#f8f9fa; text-shadow:0 2px 6px rgba(0,0,0,0.35);">
+    <strong>EIEM ERP (Enterprise Resource Planning)</strong> est la plateforme officielle de gestion intégrée de
+    <strong>l'École Internationale Enfants du Monde (EIEM)</strong>.
+    Elle centralise l'ensemble des services administratifs, académiques et financiers dans un environnement
+    moderne, sécurisé et accessible en temps réel.
+
+    <br><br>
+
+Grâce à cette plateforme, l'École Internationale Enfants du Monde centralise l'ensemble de ses activités dans un système moderne, sécurisé et accessible en ligne. Chaque utilisateur (Direction, personnel administratif, caisse, enseignants et parents) dispose d'un espace dédié adapté à ses responsabilités, permettant de gérer les inscriptions, les dossiers des élèves, les paiements, la caisse, les ressources pédagogiques, les évaluations, les notes, les bulletins et les communications. Les parents peuvent également consulter les communiqués de l'école, les photos des activités, les résultats scolaires et le suivi des paiements de leurs enfants, tout en échangeant directement avec la direction. Cette organisation garantit une gestion efficace, une communication fluide et un accès sécurisé aux informations pour l'ensemble de la communauté éducative.
+
+
+  </p>
+</div>
+
+  <div class="image-container">
+    <img src="https://static.wixstatic.com/media/f44184_61be4dcdfdd2402abc1e6edf4d1b5933~mv2.png/v1/fill/w_1354,h_677,al_c,q_90,enc_avif,quality_auto/f44184_61be4dcdfdd2402abc1e6edf4d1b5933~mv2.png" 
+         alt="École Internationale Enfants du Monde" class="school-img">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.6HCSvmaStlMzgywMsk38AgHaHU?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+     alt="EIEM Activities"
+     class="school-img">
+    <img src="https://static.wixstatic.com/media/f44184_ee8a75a3594d48d29699dc93d7f96b5e~mv2.jpg/v1/fill/w_867,h_599,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f44184_ee8a75a3594d48d29699dc93d7f96b5e~mv2.png" 
+         alt="Activités EIEM" class="school-img">
+  </div>
+
+  <div id="loginBox" class="box">
+    <h3>EIEM ERP - Connexion</h3>
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Mot de passe">
+    <button onclick="login()">Se connecter</button>
+    <p id="msg" style="color:red; font-size: 0.9em;"></p>
+  </div>
+
+<div id="dashboard">
+
+    <div class="topbar">
+
+        <div id="welcome" class="welcome"></div>
+
+        <!-- ZONE AJOUTÉE : Regroupe la cloche et le bouton de déconnexion d'origine -->
+        <div style="display: flex; align-items: center; gap: 15px;">
+            
+            <!-- 🔔 CLOCHE DE NOTIFICATION -->
+            <div class="notification-container" onclick="toggleNotificationPanel()" style="position: relative; display: inline-block; cursor: pointer;">
+                <span style="font-size: 1.5rem; padding: 5px;">🔔</span>
+                <span id="notif-badge" style="position: absolute; top: 0px; right: 0px; background: #e74c3c; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.70rem; display: none;">0</span>
+                
+                <!-- Panneau déroulant des notifications -->
+                <div id="notification-panel">
+                    <h4 style="margin: 0 0 10px 0; font-size: 1rem; border-bottom: 1px solid #eee; padding-bottom: 5px; color: #0f4c81;">Notifications</h4>
+                    <div id="notification-list" style="max-height: 250px; overflow-y: auto;">
+                        <p style="font-size: 0.85rem; color: #777; text-align: center;">Chargement...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VOTRE BOUTON DE DÉCONNEXION D'ORIGINE (Intact) -->
+            <button class="logout-btn" onclick="logout()">
+                🚪 Déconnexion
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="menu" class="menu"></div>
+
+    <div id="content" class="content-area"></div>
+
+</div>
+
+ <script>
+  let pageActuelle = "";
+
+  const URL_API = "https://script.google.com/macros/s/AKfycbxjxdKfgbLAiOlcC9cXcc8AqTJ0euQJBrJZH3cGXKQ8jp276sYm1p5-OR11YgSUVpWx/exec";
+
+  async function apiCall(action, payload = {}) {
+  try {
+    const response = await fetch(URL_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8" // Évite les blocages CORS avec Google Apps Script
+      },
+      body: JSON.stringify({ action: action, ...payload })
+    });
+    
+    return await response.json();
+  } catch (error) {
+    console.error("Erreur réseau :", error);
+    return { success: false, message: "Erreur de connexion au serveur." };
+  }
+}
+  async function login() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const msg = document.getElementById("msg");
+    
+    if (!email || !password) return msg.innerText = "Champs requis.";
+    msg.innerText = "Connexion...";
+    
+    try {
+      const response = await fetch(urlAppScript, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+          action: "login",
+          email: email,
+          password: password
+        })
+      });
+
+      const res = await response.json();
+
+      if (res.success) {
+        roleActuel = res.role;
+        
+        // 🔑 On mémorise l'e-mail dans le navigateur pour le module de notification
+        sessionStorage.setItem("userEmail", email); 
+        
+        loadDashboard(res.role);
+      } else {
+        msg.innerText = res.message || "Identifiants incorrects.";
+      }
+    } catch (error) {
+      console.error("Erreur de connexion :", error);
+      msg.innerText = "Erreur de communication avec le serveur.";
+    }
+  }
+
+  /**
+   * 1. Dashboard principal avec contrôle des accès par rôle
+   */
+  function loadDashboard(role) {
+    roleActuel = role; 
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("welcome").innerText = "Bienvenue, " + role;
+    
+    let menu = `<div class="card" onclick="actualiser()">🔄 Actualiser</div>`;
+    
+    // Menu ADMIN
+    if (role === "ADMIN") {
+        menu += `
+            <div class="card" onclick="loadStatsDashboard()">📊 Stats</div>
+            <div class="card" onclick="loadLogs()">📜 Logs</div>
+            <div class="card" onclick="loadUserManagement()">🔐 Accès</div>
+            <div class="card" onclick="loadElevesList()">🎓 Liste Élèves</div>
+            <div class="card" onclick="loadParentsList()">👨👩👧👦 Liste Parents</div> 
+            <div class="card" onclick="openInsertionEleve()">➕ Ajouter Élève</div>
+            <div class="card" onclick="openInsertionParent()">➕ Ajouter Parent</div>
+            
+            <div class="card" style="background:#f8d7da; border:1px solid #dc3545;" onclick="openSuppressionParent()">🗑️ Supprimer Parent</div>
+            <div class="card" style="background:#f8d7da;" onclick="openSuppressionEleve()">🗑️ Supprimer Élève</div>
+            
+            <button onclick="openCommunicationPanel()" style="margin-top:5px; width:100%; padding:10px;">📢 Communication Parents</button>
+            <button onclick="openFormulaireActivite()" style="background:#007bff; color:white; margin-top:5px; width:100%; padding:10px;">📤 Publier une Activité</button>
+            
+            <div class="card" onclick="loadRapportAgents()">📄 Rapport Agent</div> 
+            <div class="card" onclick="loadDriveFolders()">📁 Documents Drive</div>
+            
+            <div style="border: 1px solid #28a745; padding: 10px; margin-top:10px; border-radius: 5px; background: #e9f7ef; cursor: pointer;" onclick="openProclamationPanel()">
+                <h4 style="margin:0 0 5px 0;">🚀 Proclamation</h4>
+                <p style="margin:0; font-size: 13px; color: #333;">Cliquez pour configurer et lancer</p>
+            </div>`;
+    }
+    // Menu PARENT
+    else if (role === "PARENT") {
+        menu += `
+            <div class="card" onclick="loadResultatsScolaires()">📊 Résultats Scolaires</div>
+            <div class="card" onclick="loadActivitesScolaires()">🖼️ Activités Scolaires</div>
+            <div class="card" onclick="loadPaiementADistance()">💳 Payer à distance</div>
+            <div class="card" onclick="loadCommuniqueParent()">📢 Communiqués</div>
+            <div class="card" onclick="openSuggestion()">💬 Suggestion</div>`;
+    }
+    // Menu AGENT
+    else if (role === "AGENT") {
+        menu += `
+            <div class="card" onclick="loadDocsScolaires()">📂 Docs Scolaires</div>
+            <div class="card" onclick="openGestionInfos()">📝 Mes Infos</div>
+            <div class="card" onclick="loadActivitesScolaires()">🖼️ Activités Scolaires</div>
+            <div class="card" onclick="loadCommuniqueParent()">📢 Communiqués</div>
+            <div class="card" onclick="openSuggestion()">💬 Suggestion</div>`;
+    } 
+    // Menu CAISSE
+    else if (role === "CAISSE") {
+        menu += `
+            <div class="card" onclick="openCaisse()">💰 Paiement</div>
+            <div class="card" onclick="loadSuiviPaiements()">📈 Suivi financier</div>`;
+    }
+    
+    document.getElementById("menu").innerHTML = menu;
+    
+    // Chargement par défaut
+    if (role === "ADMIN") {
+        loadStatsDashboard(); 
+    } else {
+        document.getElementById("content").innerHTML = "<h3>Sélectionnez une option.</h3>";
+    }
+  }
+
+  function logout() { 
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("loginBox").style.display = "block";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("msg").innerText = ""; 
+    pageActuelle = ""; 
+    roleActuel = "";
+    
+    // 🧹 Nettoyage de l'e-mail en session à la déconnexion
+    sessionStorage.removeItem("userEmail");
+    
+    // Appel optionnel si géré par fetch, ou conservé si hybride
+    fetch(urlAppScript, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ action: "logout" })
+    }).catch(err => console.log(err));
+  }
+/* --- LOGIQUE CAISSE OPTIMISÉE --- */
+async function openCaisse() {
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 600px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+        <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">💰 Saisie Paiement</h3>
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Section :</label>
+            <select id="section" onchange="chargerEleves()" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #f8f9fa; font-size: 14px;">
+              <option value="">-- Choisir section --</option>
+              <option value="PRIMAIRE">PRIMAIRE</option>
+              <option value="SECONDAIRE">SECONDAIRE</option>
+              <option value="MATERNELLE">MATERNELLE</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Recherche :</label>
+            <input type="text" id="rechercheEleve" placeholder="🔍 Rechercher un élève..." onkeyup="filtrerListe()" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Élève :</label>
+            <select id="nomEleve" onchange="selectionnerEleve()" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #f8f9fa; font-size: 14px;">
+              <option value="">-- Choisir un élève --</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Classe :</label>
+            <input id="classe" placeholder="Classe" readonly style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #e9ecef; box-sizing: border-box; font-size: 14px; color: #6c757d;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Type de frais :</label>
+            <select id="typeFrais" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #f8f9fa; font-size: 14px;"><option value="">Chargement...</option></select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Montant ($) :</label>
+            <input id="montant" placeholder="Montant" type="number" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Email du parent :</label>
+            <input type="email" id="emailParent" placeholder="📧 Email du parent" class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+        </div>
+
+        <div id="zoneHistorique" style="margin-top: 20px; border-top: 1px solid #e9ecef; padding-top: 15px;">
+          <h4 style="margin-top: 0; color: #2c3e50; font-size: 15px;">Historique des paiements :</h4>
+          <table id="tableHistorique" style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="background: #f8f9fa; border-bottom: 2px solid #dee2e6;">
+                <th style="padding: 8px; text-align: left;">Date</th>
+                <th style="padding: 8px; text-align: left;">Frais</th>
+                <th style="padding: 8px; text-align: right;">Montant</th>
+              </tr>
+            </thead>
+            <tbody id="corpsHistorique"></tbody>
+          </table>
+        </div>
+
+        <button onclick="payer()" style="width: 100%; margin-top: 20px; padding: 12px; background: #28a745; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s;">Valider Paiement</button>
+        <div id="res" style="margin-top: 10px; text-align: center; font-weight: bold;"></div>
+    </div>
+  `;
+
+  const res = await apiCall("getTypesFrais");
+  const fraisList = res.data || res;
+  
+  const select = document.getElementById("typeFrais");
+  if (select && Array.isArray(fraisList)) {
+    select.innerHTML = '<option value="">-- Choisir frais --</option>';
+    fraisList.forEach(f => {
+      let opt = document.createElement("option");
+      opt.value = f; opt.textContent = f;
+      select.appendChild(opt);
+    });
+  }
+  
+  const sectionInitiale = document.getElementById("section").value;
+  if(sectionInitiale) chargerEleves();
+}
+
+let listeElevesComplete = [];
+
+async function chargerEleves() {
+  const section = document.getElementById("section").value;
+  const selectEleve = document.getElementById("nomEleve");
+  if (!section) return;
+  
+  selectEleve.innerHTML = '<option>Chargement...</option>';
+  
+  const res = await apiCall("getElevesParSection", { section });
+  const eleves = res.data || res;
+
+  listeElevesComplete = Array.isArray(eleves) ? eleves : [];
+  afficherListe(listeElevesComplete);
+}
+
+function filtrerListe() {
+  const recherche = document.getElementById("rechercheEleve").value.toLowerCase();
+  const listeFiltree = listeElevesComplete.filter(e => 
+    (e.nom || "").toLowerCase().includes(recherche)
+  );
+  afficherListe(listeFiltree);
+}
+
+function afficherListe(eleves) {
+  const sel = document.getElementById("nomEleve");
+  if (!Array.isArray(eleves)) return;
+
+  sel.innerHTML = '<option value="">-- ' + eleves.length + ' élève(s) trouvé(s) --</option>';
+  
+  eleves.forEach(e => {
+    const opt = document.createElement("option");
+    opt.value = e.nom || "";
+    opt.textContent = e.nom || "Inconnu";
+    
+    opt.dataset.classe = e.classe ? e.classe : "";
+    opt.dataset.email = e.email ? e.email : "";
+    
+    sel.appendChild(opt);
+  });
+}
+
+async function selectionnerEleve() {
+  const sel = document.getElementById("nomEleve");
+  const inputClasse = document.getElementById("classe");
+  const inputEmail = document.getElementById("emailParent");
+  const corps = document.getElementById("corpsHistorique");
+  
+  if (!sel || sel.selectedIndex <= 0) {
+    if (inputClasse) inputClasse.value = "";
+    if (inputEmail) inputEmail.value = "";
+    if (corps) corps.innerHTML = "";
+    return; 
+  }
+  
+  const selectedOption = sel.options[sel.selectedIndex];
+  const nom = sel.value; 
+  
+  const rawClasse = selectedOption.getAttribute("data-classe");
+  const rawEmail = selectedOption.getAttribute("data-email");
+  
+  const classe = (rawClasse === "undefined" || !rawClasse) ? "" : rawClasse;
+  const email = (rawEmail === "undefined" || !rawEmail) ? "" : rawEmail;
+  
+  if (inputClasse) inputClasse.value = classe;
+  if (inputEmail) inputEmail.value = email;
+  
+  if (corps) corps.innerHTML = "<tr><td colspan='3' style='padding: 10px; text-align: center; color: #6c757d;'>Chargement...</td></tr>";
+  
+  const res = await apiCall("getHistoriquePaiements", { nom });
+  const historique = res.data || res;
+
+  if (!corps) return;
+  corps.innerHTML = ""; 
+  
+  if (Array.isArray(historique) && historique.length > 0) {
+    historique.forEach(function(h) {
+      corps.innerHTML += `
+        <tr style="border-bottom: 1px solid #e9ecef;">
+          <td style="padding: 8px;">${h.date || ""}</td>
+          <td style="padding: 8px;">${h.typeFrais || ""}</td>
+          <td style="padding: 8px; text-align: right; font-weight: bold; color: #27ae60;">${h.montant || 0} $</td>
+        </tr>
+      `;
+    });
+  } else {
+    corps.innerHTML = "<tr><td colspan='3' style='padding: 10px; text-align: center; color: #6c757d;'>Aucun paiement trouvé.</td></tr>";
+  }
+}
+
+async function payer() {
+  // 1. Récupération des données, incluant le nouvel email du parent
+  const d = { 
+    nom: document.getElementById("nomEleve").value, 
+    classe: document.getElementById("classe").value, 
+    typeFrais: document.getElementById("typeFrais").value, 
+    montant: parseFloat(document.getElementById("montant").value), 
+    section: document.getElementById("section").value,
+    email: document.getElementById("emailParent") ? document.getElementById("emailParent").value : "" // Sécurité si le champ est manquant
+  };
+
+  // 2. Validation simple avant envoi
+  if (!d.nom || !d.montant || !d.typeFrais) {
+    alert("Veuillez remplir tous les champs obligatoires.");
+    return;
+  }
+
+  // 3. Feedback visuel pendant le traitement
+  const resDiv = document.getElementById("res");
+  resDiv.innerHTML = "⏳ Traitement en cours et envoi du reçu par mail...";
+
+  const serverRes = await apiCall("caissePay", d);
+  const res = serverRes.data || serverRes;
+
+  if (res && res.status === "DONE") {
+    resDiv.innerHTML = `
+      <div style="margin-top: 15px; padding: 15px; background: #e8f5e9; border: 1px solid #27ae60; border-radius: 6px; color: #155724; font-family: sans-serif;">
+        <p style="margin: 0 0 10px 0; font-weight: bold;">✅ Paiement validé !</p>
+        <button onclick="window.open('${res.pdf}','_blank')" style="padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">
+          🖨️ Voir le reçu PDF
+        </button>
+      </div>
+    `;
+  } else {
+    resDiv.innerHTML = `
+      <div style="margin-top: 15px; padding: 15px; background: #fff3f3; border: 1px solid #f5c6cb; border-radius: 6px; color: #721c24; font-family: sans-serif;">
+        ❌ Erreur: ${res ? res.message : "Erreur inconnue"}
+      </div>
+    `;
+  }
+}
+
+/**
+ * Interface Suivi Financier
+ */
+function loadSuiviPaiements() {
+    document.getElementById("content").innerHTML = `
+        <div style="max-width: 800px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+            <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📈 Suivi financier</h3>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+                <button onclick="afficherVueGlobale()" style="flex: 1; min-width: 150px; background: #f1c40f; color: #fff; border: none; padding: 12px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: opacity 0.2s;">Voir tous les soldes</button>
+                <button onclick="afficherRechercheIndividuelle()" style="flex: 1; min-width: 150px; background: #e67e22; color: #fff; border: none; padding: 12px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: opacity 0.2s;">Rechercher un élève</button>
+                <button onclick="afficherRechercheParClasse()" style="flex: 1; min-width: 150px; background: #d35400; color: #fff; border: none; padding: 12px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: opacity 0.2s;">Voir solde par classe</button>
+                <button onclick="afficherRechercheParSection()" style="flex: 1; min-width: 150px; background: #c0392b; color: #fff; border: none; padding: 12px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: opacity 0.2s;">Voir solde par section</button>
+            </div>
+            
+            <div id="resultat-container" style="margin-top: 20px;"></div>
+        </div>
+    `;
+}
+// Recherche Individuelle
+function afficherRechercheIndividuelle() {
+    document.getElementById("resultat-container").innerHTML = `
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif;">
+            <h4 style="margin-top: 0; color: #2c3e50; font-size: 15px;">🔍 Recherche par élève</h4>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <input type="text" id="nomInput" placeholder="Nom exact de l'élève..." style="flex: 1; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;">
+                <button onclick="rechercherUnEleve()" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s;">Rechercher</button>
+            </div>
+            <div id="solde-individu" style="margin-top: 10px;"></div>
+        </div>
+    `;
+}
+
+async function rechercherUnEleve() {
+    let nom = document.getElementById("nomInput").value.trim();
+    if (!nom) { alert("Veuillez entrer un nom."); return; } 
+
+    const soldeDiv = document.getElementById("solde-individu");
+    soldeDiv.innerHTML = "<p style='color: #6c757d; font-style: italic;'>Recherche en cours...</p>";
+
+    const res = await apiCall("getSoldeEleve", { nom });
+    const total = res.data !== undefined ? res.data : res;
+    let montant = parseFloat(total) || 0;
+    
+    soldeDiv.innerHTML = `
+        <div style="padding: 12px; background: #e8f5e9; border: 1px solid #c3e6cb; border-radius: 4px; color: #155724; font-weight: bold;">
+          Total pour ${nom} : <span style="color: #27ae60;">${montant.toFixed(2)} USD</span>
+        </div>
+    `;
+}
+
+// Recherche par Classe (Liste dynamique automatique)
+async function afficherRechercheParClasse() {
+    // Message de chargement pendant la récupération des classes
+    document.getElementById("resultat-container").innerHTML = `
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif;">
+            <p style="color: #6c757d; font-style: italic; margin: 0;">Chargement des classes...</p>
+        </div>
+    `;
+
+    const res = await apiCall("getListeClasses");
+    const classes = res.data || res;
+
+    if (!Array.isArray(classes)) {
+        document.getElementById("resultat-container").innerHTML = `
+            <div style="background: #fff3f3; padding: 20px; border-radius: 6px; border: 1px solid #f5c6cb; color: #721c24; font-family: sans-serif;">
+                Erreur lors du chargement des classes.
+            </div>
+        `;
+        return;
+    }
+
+    let options = classes.map(c => `<option value="${c}">${c}</option>`).join("");
+    
+    document.getElementById("resultat-container").innerHTML = `
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif;">
+            <h4 style="margin-top: 0; color: #2c3e50; font-size: 15px;">🏫 Recherche par classe</h4>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <select id="classeInput" style="flex: 1; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+                    <option value="">-- Choisir une classe --</option>
+                    ${options}
+                </select>
+                <button onclick="rechercherParClasse()" style="padding: 10px 20px; background: #e67e22; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s;">Voir solde</button>
+            </div>
+            <div id="solde-classe" style="margin-top: 15px; font-weight: bold;"></div>
+        </div>
+    `;
+}
+
+async function rechercherParClasse() {
+    const classe = document.getElementById("classeInput").value;
+    if (!classe) { alert("Veuillez choisir une classe."); return; }
+    
+    const soldeClasseDiv = document.getElementById("solde-classe");
+    soldeClasseDiv.innerText = "Calcul en cours...";
+    
+    const res = await apiCall("getSoldeClasse", { classe });
+    const solde = res.data !== undefined ? res.data : res;
+    let montant = parseFloat(solde) || 0;
+    
+    soldeClasseDiv.innerHTML = `
+        <div style="padding: 12px; background: #e8f5e9; border: 1px solid #c3e6cb; border-radius: 4px; color: #155724;">
+            Total perçu pour la classe <b>${classe}</b> : <span style="color: #27ae60;">${montant.toFixed(2)} USD</span>
+        </div>
+    `;
+}
+
+function afficherRechercheParSection() {
+    document.getElementById("resultat-container").innerHTML = `
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif;">
+            <h4 style="margin-top: 0; color: #2c3e50; font-size: 15px;">🏫 Recherche par section</h4>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <select id="sectionInput" style="flex: 1; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+                    <option value="RECUS_CAISSE_MATERNELLE">Maternelle</option>
+                    <option value="RECUS_CAISSE_PRIMAIRE">Primaire</option>
+                    <option value="RECUS_CAISSE_SECONDAIRE">Secondaire</option>
+                </select>
+                <button onclick="rechercherParSection()" style="padding: 10px 20px; background: #d35400; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s;">Calculer</button>
+            </div>
+            <div id="solde-section" style="margin-top: 15px; font-weight: bold;"></div>
+        </div>
+    `;
+}
+
+async function rechercherParSection() {
+    const selectElem = document.getElementById("sectionInput");
+    const nomFeuille = selectElem.value;
+    const texteSection = selectElem.options[selectElem.selectedIndex].text;
+    
+    const soldeSectionDiv = document.getElementById("solde-section");
+    soldeSectionDiv.innerText = "Calcul en cours...";
+    
+    const res = await apiCall("getSoldeParSection", { nomFeuille });
+    const solde = res.data !== undefined ? res.data : res;
+    let montant = parseFloat(solde) || 0;
+    
+    soldeSectionDiv.innerHTML = `
+        <div style="padding: 12px; background: #e8f5e9; border: 1px solid #c3e6cb; border-radius: 4px; color: #155724;">
+            Total perçu pour la section <b>${texteSection}</b> : <span style="color: #27ae60;">${montant.toFixed(2)} USD</span>
+        </div>
+    `;
+}
+
+async function afficherVueGlobale() {
+    document.getElementById("resultat-container").innerHTML = `
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif;">
+            <p style="color: #6c757d; font-style: italic; margin: 0;">Chargement...</p>
+        </div>
+    `;
+    
+    const res = await apiCall("getAllSoldes");
+    const soldes = res.data || res;
+
+    let html = `
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif;">
+            <h4 style="margin-top: 0; color: #2c3e50; font-size: 15px;">📊 Vue globale des soldes</h4>
+            <div style="max-height: 400px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 4px;">
+                <table style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
+                    <thead>
+                        <tr style="background: #3498db; color: white; position: sticky; top: 0;">
+                            <th style="padding: 12px; text-align: left;">Élève</th>
+                            <th style="padding: 12px; text-align: right;">Total Payé ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    `;
+    
+    let totalGeneral = 0;
+    
+    if (soldes && typeof soldes === 'object') {
+        for (let nom in soldes) {
+            let montant = parseFloat(soldes[nom]) || 0;
+            totalGeneral += montant;
+            
+            html += `
+                <tr style="border-bottom: 1px solid #e9ecef;">
+                    <td style="padding: 10px 12px;">${nom}</td>
+                    <td style="padding: 10px 12px; text-align: right; font-weight: bold; color: #27ae60;">${montant.toFixed(2)} $</td>
+                </tr>
+            `;
+        }
+    }
+    
+    html += `
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: #e9ecef; font-weight: bold; border-top: 2px solid #dee2e6;">
+                            <td style="padding: 12px; text-align: right; color: #2c3e50;">TOTAL GÉNÉRAL</td>
+                            <td style="padding: 12px; text-align: right; color: #2c3e50;">${totalGeneral.toFixed(2)} $</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    `;
+             
+    document.getElementById("resultat-container").innerHTML = html;
+}
+
+/* --- MODULE AGENT - INTERFACE --- */
+async function loadDocsScolaires() {
+  pageActuelle = "loadDocsScolaires";
+  // On vide le contenu et on affiche le chargement
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 800px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📂 Documents Scolaires</h3>
+      <div id='fileList' style="margin-top: 20px; color: #6c757d; font-style: italic;">Chargement en cours...</div>
+    </div>
+  `;
+  
+  const serverRes = await apiCall("agent_getDocs");
+  const res = serverRes.data || serverRes;
+  const fileListDiv = document.getElementById("fileList");
+
+  if (!fileListDiv) return;
+
+  if (res && res.success) {
+    if (res.data && res.data.length > 0) {
+      let html = `
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
+            <thead>
+              <tr style="background: #3498db; color: white;">
+                <th style="padding: 12px; text-align: left;">Nom</th>
+                <th style="padding: 12px; text-align: left;">Date</th>
+                <th style="padding: 12px; text-align: center;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      res.data.forEach(f => {
+        html += `
+          <tr style="border-bottom: 1px solid #e9ecef;">
+            <td style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${f.name}</td>
+            <td style="padding: 10px 12px; color: #7f8c8d;">${f.date}</td>
+            <td style="padding: 10px 12px; text-align: center;">
+              <a href='${f.url}' target='_blank' style="display: inline-block; padding: 6px 12px; background: #27ae60; color: white; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 13px; transition: background 0.2s;">Télécharger</a>
+            </td>
+          </tr>
+        `;
+      });
+      fileListDiv.innerHTML = html + "</tbody></table></div>";
+    } else {
+      fileListDiv.innerHTML = "<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0;'>Le dossier est vide.</p>";
+    }
+  } else {
+    fileListDiv.innerHTML = `<p style='color: #e67e22; background: #fef9e7; padding: 15px; border-radius: 6px; border: 1px solid #f9e79f; margin: 0; text-align: center;'>Info : ${res ? res.res : "Erreur inconnue"}</p>`;
+  }
+}
+
+function openSuggestion() {
+  pageActuelle = "openSuggestion";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 600px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">💬 Envoyer une suggestion à la Direction</h3>
+      <div style="margin-bottom: 15px;">
+        <textarea id="sugText" placeholder="Écrivez votre suggestion ici..." style="width: 100%; height: 150px; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px; font-family: sans-serif; resize: vertical;"></textarea>
+      </div>
+      <button id="sendBtn" onclick="sendSug()" style="background: #2c3e50; color: white; padding: 12px 20px; border: none; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.2s;">
+        Envoyer la suggestion
+      </button>
+    </div>
+  `;
+}
+
+async function sendSug() {
+  const textarea = document.getElementById("sugText");
+  const text = textarea ? textarea.value.trim() : "";
+  if (!text) {
+    alert("Veuillez écrire un message.");
+    return;
+  }
+  
+  const btn = document.getElementById("sendBtn");
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Envoi en cours...";
+    btn.style.opacity = "0.7";
+  }
+
+  const serverRes = await apiCall("agent_sendSuggestion", { text });
+  const res = serverRes.data || serverRes;
+
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Envoyer la suggestion";
+    btn.style.opacity = "1";
+  }
+
+  if (res && res.success) {
+    alert("Suggestion envoyée avec succès !");
+    if (textarea) textarea.value = "";
+  } else {
+    alert("Erreur : " + (res && res.res ? res.res : "Erreur inconnue"));
+  }
+}
+
+/* --- MODULE AGENT - INTERFACE --- */
+async function loadDocsScolaires() {
+  pageActuelle = "loadDocsScolaires";
+  // On vide le contenu et on affiche le chargement
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 800px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📂 Documents Scolaires</h3>
+      <div id='fileList' style="margin-top: 20px; color: #6c757d; font-style: italic;">Chargement en cours...</div>
+    </div>
+  `;
+  
+  const serverRes = await apiCall("agent_getDocs");
+  const res = serverRes.data || serverRes;
+  const fileListDiv = document.getElementById("fileList");
+
+  if (!fileListDiv) return;
+
+  if (res && res.success) {
+    if (res.data && res.data.length > 0) {
+      let html = `
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
+            <thead>
+              <tr style="background: #3498db; color: white;">
+                <th style="padding: 12px; text-align: left;">Nom</th>
+                <th style="padding: 12px; text-align: left;">Date</th>
+                <th style="padding: 12px; text-align: center;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      res.data.forEach(f => {
+        html += `
+          <tr style="border-bottom: 1px solid #e9ecef;">
+            <td style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${f.name}</td>
+            <td style="padding: 10px 12px; color: #7f8c8d;">${f.date}</td>
+            <td style="padding: 10px 12px; text-align: center;">
+              <a href='${f.url}' target='_blank' style="display: inline-block; padding: 6px 12px; background: #27ae60; color: white; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 13px; transition: background 0.2s;">Télécharger</a>
+            </td>
+          </tr>
+        `;
+      });
+      fileListDiv.innerHTML = html + "</tbody></table></div>";
+    } else {
+      fileListDiv.innerHTML = "<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0;'>Le dossier est vide.</p>";
+    }
+  } else {
+    fileListDiv.innerHTML = `<p style='color: #e67e22; background: #fef9e7; padding: 15px; border-radius: 6px; border: 1px solid #f9e79f; margin: 0; text-align: center;'>Info : ${res ? res.res : "Erreur inconnue"}</p>`;
+  }
+}
+
+function openSuggestion() {
+  pageActuelle = "openSuggestion";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 600px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">💬 Envoyer une suggestion à la Direction</h3>
+      <div style="margin-bottom: 15px;">
+        <textarea id="sugText" placeholder="Écrivez votre suggestion ici..." style="width: 100%; height: 150px; padding: 12px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px; font-family: sans-serif; resize: vertical;"></textarea>
+      </div>
+      <button id="sendBtn" onclick="sendSug()" style="background: #2c3e50; color: white; padding: 12px 20px; border: none; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.2s;">
+        Envoyer la suggestion
+      </button>
+    </div>
+  `;
+}
+
+async function sendSug() {
+  const textarea = document.getElementById("sugText");
+  const text = textarea ? textarea.value.trim() : "";
+  if (!text) {
+    alert("Veuillez écrire un message.");
+    return;
+  }
+  
+  const btn = document.getElementById("sendBtn");
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Envoi en cours...";
+    btn.style.opacity = "0.7";
+  }
+
+  // 1. Détection ultra-robuste du rôle de la session active
+  let roleActuel = "PARENT"; // Valeur par défaut
+  
+  if (typeof userRole !== 'undefined') {
+    roleActuel = userRole;
+  } else if (typeof role !== 'undefined') {
+    roleActuel = role;
+  } else if (typeof session !== 'undefined' && session.role) {
+    roleActuel = session.role;
+  } else if (localStorage.getItem("userRole")) {
+    roleActuel = localStorage.getItem("userRole");
+  }
+
+  // 2. Aiguillage dynamique vers la fonction API selon le rôle détecté
+  let actionName = (roleActuel === "AGENT") ? "agent_sendSuggestion" : "parent_sendSuggestion";
+
+  const serverRes = await apiCall(actionName, { text });
+  const res = serverRes.data || serverRes;
+
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Envoyer la suggestion";
+    btn.style.opacity = "1";
+  }
+
+  if (res && res.success) {
+    alert("Votre suggestion a été envoyée avec succès !");
+    if (textarea) textarea.value = "";
+  } else {
+    let errMsg = res ? (res.message || res.res || JSON.stringify(res)) : "Action non autorisée";
+    alert("Erreur : " + errMsg);
+  }
+}
+
+function openGestionInfos() {
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 800px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📝 Mettre à jour mes informations</h3>
+      <form id="formAgent" onsubmit="event.preventDefault(); saveAgentInfos();">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Nom complet</label>
+            <input type="text" id="nom" placeholder="Nom complet" required style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Adresse physique</label>
+            <input type="text" id="adresse" placeholder="Adresse physique" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Date de naissance</label>
+            <input type="date" id="dob" title="Date de naissance" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Téléphone</label>
+            <input type="text" id="tel" placeholder="Téléphone" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Email</label>
+            <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Niveau d'étude</label>
+            <input type="text" id="niveauEtude" placeholder="Niveau d'étude" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Domaine d'expertise</label>
+            <input type="text" id="domaine" placeholder="Domaine d'expertise" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Nom du proche</label>
+            <input type="text" id="procheNom" placeholder="Nom du proche" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Téléphone du proche</label>
+            <input type="text" id="procheTel" placeholder="Téléphone du proche" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Adresse du proche</label>
+            <input type="text" id="procheAdresse" placeholder="Adresse du proche" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Relation</label>
+            <input type="text" id="relation" placeholder="Relation (ex: Conjoint)" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Poste occupé</label>
+            <input type="text" id="poste" placeholder="Poste occupé" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Date d'embauche</label>
+            <input type="date" id="dateEmbauche" title="Date d'embauche" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+          </div>
+          
+          <div style="grid-column: span 2; background: #f8f9fa; padding: 15px; border-radius: 6px; border: 1px solid #e9ecef; display: flex; flex-direction: column; gap: 12px;">
+            <label style="font-weight: 500; font-size: 13px; color: #2c3e50;">Photo: <input type="file" id="photo" accept="image/*" style="margin-top: 5px; display: block;"></label>
+            <label style="font-weight: 500; font-size: 13px; color: #2c3e50;">Diplôme (PDF/Image): <input type="file" id="diplome" style="margin-top: 5px; display: block;"></label>
+            <label style="font-weight: 500; font-size: 13px; color: #2c3e50;">Relevés de cotes (PDF/Image): <input type="file" id="releve" style="margin-top: 5px; display: block;"></label>
+          </div>
+          
+          <div style="grid-column: span 2; margin-top: 10px;">
+            <button type="submit" id="saveBtn" style="background: #27ae60; color: white; padding: 12px 20px; border: none; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.2s;">
+              Enregistrer mes informations
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>`;
+}
+
+async function saveAgentInfos() {
+  const btn = document.getElementById("saveBtn");
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Traitement des données...";
+    btn.style.opacity = "0.7";
+  }
+
+  try {
+    // Lecture des 3 fichiers
+    const [photo, diplome, releve] = await Promise.all([
+      readFile(document.getElementById('photo').files[0]),
+      readFile(document.getElementById('diplome').files[0]),
+      readFile(document.getElementById('releve').files[0])
+    ]);
+
+    const data = {
+      nom: document.getElementById('nom').value,
+      adresse: document.getElementById('adresse').value,
+      dob: document.getElementById('dob').value,
+      tel: document.getElementById('tel').value,
+      email: document.getElementById('email').value,
+      niveauEtude: document.getElementById('niveauEtude').value,
+      domaine: document.getElementById('domaine').value,
+      procheNom: document.getElementById('procheNom').value,
+      procheTel: document.getElementById('procheTel').value,
+      procheAdresse: document.getElementById('procheAdresse').value,
+      relation: document.getElementById('relation').value,
+      poste: document.getElementById('poste').value,
+      dateEmbauche: document.getElementById('dateEmbauche').value,
+      // Fichiers
+      photoData: photo?.data, photoName: document.getElementById('photo').files[0]?.name,
+      diplomeData: diplome?.data, diplomeName: document.getElementById('diplome').files[0]?.name,
+      releveData: releve?.data, releveName: document.getElementById('releve').files[0]?.name
+    };
+
+    const serverRes = await apiCall("agent_updateProfile", data);
+    const res = serverRes.data || serverRes;
+
+    if (res && res.success) {
+      alert("Données enregistrées avec succès !");
+      const form = document.getElementById("formAgent");
+      if (form) form.reset();
+    } else {
+      alert("Erreur serveur : " + (res && res.res ? res.res : "Erreur inconnue"));
+    }
+  } catch (err) {
+    alert("Erreur lors de la préparation des fichiers ou de la connexion : " + err);
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerText = "Enregistrer mes informations";
+      btn.style.opacity = "1";
+    }
+  }
+}
+
+// Utilitaires de lecture
+function readFile(file) {
+  return new Promise((resolve) => {
+    if (!file) return resolve(null);
+    const reader = new FileReader();
+    reader.onload = e => resolve({data: e.target.result});
+    reader.readAsDataURL(file);
+  });
+}
+
+/* --- MODULE ADMIN COMPLET --- */
+/**
+ * 2. Fonction d'affichage des statistiques (pour l'interface ADMIN)
+ */
+async function loadStatsDashboard() {
+  pageActuelle = "loadStatsDashboard";
+  
+  // Injection de la structure pour les graphiques (chartSexe et chartCivil retirés)
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 900px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📊 Statistiques Détaillées</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; justify-content: center;">
+        <div style="flex: 1; min-width: 300px; max-width: 400px; background: #f8f9fa; padding: 15px; border-radius: 6px; border: 1px solid #e9ecef;">
+          <canvas id="chartEtude"></canvas>
+        </div>
+        <div style="flex: 1; min-width: 300px; max-width: 400px; background: #f8f9fa; padding: 15px; border-radius: 6px; border: 1px solid #e9ecef;">
+          <canvas id="chartEleves"></canvas>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  await renderCharts();
+}
+
+/**
+ * Fonction de rendu des graphiques
+ */
+async function renderCharts() {
+  const serverRes = await apiCall("admin_dashboardStats");
+  const res = serverRes.data || serverRes;
+
+  if (!res || !res.success) {
+    const content = document.getElementById("content");
+    if (content) {
+      content.innerHTML = `
+        <div style="max-width: 600px; margin: 20px auto; background: #fff3f3; padding: 20px; border-radius: 6px; border: 1px solid #f5c6cb; color: #721c24; font-family: sans-serif; text-align: center;">
+          Erreur : ${res ? res.res : "Erreur inconnue"}
+        </div>
+      `;
+    }
+    return;
+  }
+  
+  const a = res.agents;
+  const e = res.eleves;
+
+  // 1. Graphique Niveau d'Étude
+  const ctxEtude = document.getElementById('chartEtude');
+  if (ctxEtude) {
+    new Chart(ctxEtude, {
+      type: 'bar',
+      data: {
+        labels: ['Aucun niveau', 'Diplôme État', 'Graduat', 'Licence', 'Doctorat', 'Autres'],
+        datasets: [{ 
+          label: 'Nombre', 
+          data: [a.aucun_niveau, a.dip_etat, a.gradues, a.licencies, a.doctorat, a.autres], 
+          backgroundColor: '#2ecc71',
+          borderRadius: 4
+        }]
+      },
+      options: { 
+        responsive: true,
+        plugins: { 
+          title: { display: true, text: 'Niveau d\'Études Agents', font: { size: 14, family: 'sans-serif' } } 
+        } 
+      }
+    });
+  }
+
+  // 2. Graphique Élèves
+  const ctxEleves = document.getElementById('chartEleves');
+  if (ctxEleves) {
+    new Chart(ctxEleves, {
+      type: 'bar',
+      data: {
+        labels: ['Maternelle', 'Primaire', 'Secondaire'],
+        datasets: [
+          { label: 'Filles', data: [e.MATERNELLE.filles, e.PRIMAIRE.filles, e.SECONDAIRE.filles], backgroundColor: '#ff9999', borderRadius: 4 },
+          { label: 'Garçons', data: [e.MATERNELLE.garcons, e.PRIMAIRE.garcons, e.SECONDAIRE.garcons], backgroundColor: '#66b3ff', borderRadius: 4 }
+        ]
+      },
+      options: { 
+        responsive: true,
+        plugins: { 
+          title: { display: true, text: 'Élèves par section', font: { size: 14, family: 'sans-serif' } } 
+        } 
+      }
+    });
+  }
+}
+
+/**
+ * Fonction d'actualisation globale
+ */
+function actualiser() {
+  if (pageActuelle && typeof window[pageActuelle] === "function") {
+    window[pageActuelle]();
+  } else {
+    loadDashboard(roleActuel);
+  }
+}
+
+let allLogs = []; 
+
+async function loadLogs() {
+  pageActuelle = "loadLogs";
+  const contentDiv = document.getElementById("content");
+  if (!contentDiv) return;
+
+  // Réinitialisation simple : titre et conteneur de tableau uniquement
+  contentDiv.innerHTML = `
+    <div style="max-width: 900px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📜 Journal du Système (Logs)</h3>
+      <div id="logsTableContainer" style="margin-top: 20px; color: #6c757d; font-style: italic;">Chargement des données...</div>
+    </div>
+  `;
+
+  // Appel direct des données
+  const serverRes = await apiCall("admin_getLogs");
+  const res = serverRes.data || serverRes;
+  const container = document.getElementById("logsTableContainer");
+
+  if (!container) return;
+
+  if (res && res.success) {
+    allLogs = res.data;
+    if (typeof renderLogs === "function") {
+      renderLogs(allLogs);
+    } else {
+      container.innerHTML = `<p style="color: #27ae60; font-weight: bold; font-style: normal;">${allLogs.length} entrées chargées dans le journal.</p>`;
+    }
+  } else {
+    container.innerHTML = "<p style='color: #721c24; background: #fff3f3; padding: 15px; border-radius: 6px; border: 1px solid #f5c6cb; font-style: normal; margin: 0; text-align: center;'>Aucune donnée disponible.</p>";
+  }
+}
+
+// Fonction unique et optimisée pour afficher le tableau
+function renderLogs(data) {
+  const container = document.getElementById("logsTableContainer");
+  if (!container) return;
+
+  if (!data || data.length === 0) {
+    container.innerHTML = "<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0; font-family: sans-serif;'>Aucun résultat trouvé.</p>";
+    return;
+  }
+
+  let html = `
+    <div style="overflow-x: auto; max-height: 400px; border: 1px solid #dee2e6; border-radius: 4px;">
+      <table style="width: 100%; border-collapse: collapse; background: #fff; font-family: sans-serif; font-size: 14px;">
+        <thead style="background: #2c3e50; color: white; position: sticky; top: 0;">
+          <tr>
+            <th style="padding: 12px; text-align: left;">Date</th>
+            <th style="padding: 12px; text-align: left;">Utilisateur</th>
+            <th style="padding: 12px; text-align: left;">Action</th>
+            <th style="padding: 12px; text-align: left;">État</th>
+          </tr>
+        </thead>
+        <tbody>
+  `;
+  
+  data.forEach(r => {
+    // r[0]=Date, r[1]=Email, r[2]=Utilisateur, r[3]=Action, r[4]=État
+    let etatStyle = "";
+    const etat = (r[4] || "").toString().toLowerCase();
+    if (etat.includes("succes") || etat.includes("done") || etat.includes("ok")) {
+      etatStyle = "color: #27ae60; font-weight: bold;";
+    } else if (etat.includes("err") || etat.includes("echec") || etat.includes("fail")) {
+      etatStyle = "color: #c0392b; font-weight: bold;";
+    }
+
+    html += `
+      <tr style="border-bottom: 1px solid #e9ecef;">
+        <td style="padding: 10px 12px; color: #7f8c8d; white-space: nowrap;">${r[0] || ""}</td>
+        <td style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${r[2] || ""}</td>
+        <td style="padding: 10px 12px; color: #34495e;">${r[3] || ""}</td>
+        <td style="padding: 10px 12px; ${etatStyle}">${r[4] || ""}</td>
+      </tr>
+    `;
+  });
+  
+  html += `</tbody></table></div>`;
+  container.innerHTML = html;
+}
+
+// Fonction unique de filtrage
+function filterLogs() {
+  const searchInput = document.getElementById("searchLog");
+  if (!searchInput) return;
+  const query = searchInput.value.toLowerCase();
+  
+  const filtered = allLogs.filter(r => {
+    const userMatch = r[2] ? r[2].toString().toLowerCase().includes(query) : false;
+    const actionMatch = r[3] ? r[3].toString().toLowerCase().includes(query) : false;
+    return userMatch || actionMatch;
+  });
+  renderLogs(filtered);
+}
+
+async function loadUserManagement() {
+  pageActuelle = "loadUserManagement";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 800px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">🔐 Gestion Accès</h3>
+      <div id='userList' style="margin-top: 20px; color: #6c757d; font-style: italic;">Chargement...</div>
+    </div>
+  `;
+  
+  const serverRes = await apiCall("admin_getUsers", { role: "ADMIN" });
+  const users = serverRes.data || serverRes;
+  const userListDiv = document.getElementById("userList");
+
+  if (!userListDiv) return;
+
+  if (Array.isArray(users)) {
+    if (users.length > 0) {
+      let table = `
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
+            <thead>
+              <tr style="background: #3498db; color: white;">
+                <th style="padding: 12px; text-align: left;">Email</th>
+                <th style="padding: 12px; text-align: center;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      users.forEach(u => {
+        table += `
+          <tr style="border-bottom: 1px solid #e9ecef;">
+            <td style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${u.email}</td>
+            <td style="padding: 10px 12px; text-align: center; color: #7f8c8d;">...</td>
+          </tr>
+        `;
+      });
+      userListDiv.innerHTML = table + "</tbody></table></div>";
+    } else {
+      userListDiv.innerHTML = "<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0;'>Aucun utilisateur trouvé.</p>";
+    }
+  } else {
+    userListDiv.innerHTML = "<p style='color: #721c24; background: #fff3f3; padding: 15px; border-radius: 6px; border: 1px solid #f5c6cb; margin: 0; text-align: center;'>Erreur lors du chargement des utilisateurs.</p>";
+  }
+}
+
+function loadDriveFolders() {
+  pageActuelle = "loadDriveFolders";
+  
+  // Utilisation d'une chaîne de caractères propre et stylisée
+  const htmlContent = `
+    <div style="max-width: 900px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📁 Gestion Drive Administratif</h3>
+      <p style="color: #555; font-size: 14px; margin-bottom: 20px;">Sélectionnez un dossier pour gérer vos documents :</p>
+      
+      <div class="menu" style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 25px;">
+        <div class="card" onclick="fetchDriveFiles('DOC_SCOLAIRE', 'Docs Scolaires')" style="flex: 1; min-width: 180px; background: #f8f9fa; border: 1px solid #ced4da; border-radius: 6px; padding: 15px; text-align: center; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s;">📂 Docs Scolaires</div>
+        <div class="card" onclick="fetchDriveFiles('DOSSIER_REUNIONS', 'Réunions')" style="flex: 1; min-width: 180px; background: #f8f9fa; border: 1px solid #ced4da; border-radius: 6px; padding: 15px; text-align: center; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s;">🤝 Réunions</div>
+        <div class="card" onclick="fetchDriveFiles('DOSSIER_BULLETINS', 'Bulletin')" style="flex: 1; min-width: 180px; background: #f8f9fa; border: 1px solid #ced4da; border-radius: 6px; padding: 15px; text-align: center; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s;">🤝 Bulletin</div>
+      </div>
+      
+      <div id="fileListContainer"></div>
+    </div>
+  `;
+  
+  document.getElementById("content").innerHTML = htmlContent;
+}
+
+/** 📁 Fonction unique de récupération des fichiers */
+async function fetchDriveFiles(folderKey, folderName = "Documents") {
+  // On utilise un seul conteneur cohérent
+  const container = document.getElementById("fileListContainer") || document.getElementById("fileList");
+  
+  if (!container) {
+    console.error("Erreur : Aucun conteneur trouvé pour afficher les fichiers.");
+    return;
+  }
+
+  container.innerHTML = `
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif; text-align: center;">
+      <p style="color: #6c757d; font-style: italic; margin: 0;">🔄 Chargement des fichiers de ${folderName}...</p>
+    </div>
+  `;
+  
+  const serverRes = await apiCall("admin_getFiles", { folderKey });
+  const res = serverRes.data || serverRes;
+
+  if (res && res.success) {
+    let html = `
+      <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #e9ecef; font-family: sans-serif; margin-top: 15px;">
+        <h4 style="margin-top: 0; color: #2c3e50; font-size: 16px; border-bottom: 2px solid #e9ecef; padding-bottom: 8px;">📂 ${folderName}</h4>
+        
+        <!-- Barre de recherche -->
+        <div style="margin-bottom: 15px;">
+          <input type="text" id="searchFile" placeholder="Filtrer les fichiers..." 
+                 onkeyup="filterFiles()" 
+                 style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+        </div>
+    `;
+    
+    if (!res.data || res.data.length === 0) {
+      html += `<p style="color: #7f8c8d; text-align: center; padding: 15px; margin: 0;">Ce dossier est vide.</p>`;
+    } else {
+      html += `
+        <div style="max-height: 350px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 4px; background: #fff; margin-bottom: 20px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="background: #3498db; color: white; position: sticky; top: 0;">
+                <th style="padding: 12px; text-align: left;">Nom du fichier</th>
+                <th style="padding: 12px; text-align: center; width: 150px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="fileTableBody">
+      `;
+               
+      res.data.forEach(f => {
+        html += `
+          <tr class="fileRow" style="border-bottom: 1px solid #e9ecef;">
+            <td class="fileName" style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${f.name}</td>
+            <td style="padding: 10px 12px; text-align: center; white-space: nowrap;">
+              <a href="${f.url}" target="_blank" style="display: inline-block; padding: 5px 10px; background: #27ae60; color: white; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 12px; margin-right: 6px; transition: background 0.2s;">Ouvrir</a>
+              <button onclick="deleteFile('${f.id}', '${folderKey}', '${folderName}')" 
+                      style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 12px; cursor: pointer; transition: background 0.2s;">Supprimer</button>
+            </td>
+          </tr>
+        `;
+      });
+      html += `</tbody></table></div>`;
+    }
+    
+    // Ajout du formulaire d'upload
+    if (typeof renderUploadForm === 'function') {
+      html += renderUploadForm(folderKey, folderName);
+    }
+    
+    html += `</div>`;
+    container.innerHTML = html;
+  } else {
+    container.innerHTML = `
+      <div style="background: #fff3f3; padding: 20px; border-radius: 6px; border: 1px solid #f5c6cb; color: #721c24; font-family: sans-serif; text-align: center;">
+        Erreur serveur : ${res ? res.res : "Erreur inconnue"}
+      </div>
+    `;
+  }
+}
+
+/** 🔍 Filtrage dynamique pour chaque dossier */
+function filterFiles() {
+  const searchInput = document.getElementById("searchFile");
+  if (!searchInput) return;
+  const input = searchInput.value.toLowerCase();
+  const rows = document.querySelectorAll(".fileRow");
+  
+  rows.forEach(row => {
+    const fileNameEl = row.querySelector(".fileName");
+    if (fileNameEl) {
+      const fileName = fileNameEl.innerText.toLowerCase();
+      row.style.display = fileName.includes(input) ? "" : "none";
+    }
+  });
+}
+
+// Fonction pour gérer la suppression
+async function deleteFile(fileId, folderKey, folderName) {
+  if (confirm("Voulez-vous vraiment supprimer ce fichier ?")) {
+    const serverRes = await apiCall("admin_deleteFile", { fileId });
+    const res = serverRes.data || serverRes;
+    
+    if (res && (res.success || res === true)) {
+      alert("Fichier supprimé !");
+      fetchDriveFiles(folderKey, folderName);
+    } else {
+      alert("Erreur lors de la suppression du fichier.");
+    }
+  }
+}
+
+// 2. Formulaire d'Upload pour l'Admin
+function renderUploadForm(folderKey, folderName = "Documents") {
+  return `
+    <div style="margin-top: 20px; padding: 20px; background: #ffffff; border: 1px solid #ced4da; border-radius: 6px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);">
+      <h4 style="margin-top: 0; color: #2c3e50; font-size: 15px; margin-bottom: 12px;">📤 Téléverser un fichier</h4>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="file" id="fileInput" style="padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+        <button onclick="handleUpload('${folderKey}', '${folderName}')" style="background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 4px; font-weight: bold; font-size: 14px; cursor: pointer; transition: background 0.2s; align-self: flex-start;">Envoyer le fichier</button>
+      </div>
+    </div>
+  `;
+}
+
+async function handleUpload(folderKey, folderName = "Documents") {
+  const fileInput = document.getElementById('fileInput');
+  const file = fileInput ? fileInput.files[0] : null;
+  if (!file) {
+    alert("Veuillez choisir un fichier");
+    return;
+  }
+  
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    const data = e.target.result.split(",")[1];
+    
+    // Afficher un retour visuel de chargement si besoin ou désactiver les boutons
+    const serverRes = await apiCall("admin_uploadFile", {
+      data: data,
+      name: file.name,
+      type: file.type,
+      folderKey: folderKey
+    });
+    const res = serverRes.data || serverRes;
+
+    if (res && (res.success || res === true)) {
+      alert("Fichier envoyé avec succès !");
+      fetchDriveFiles(folderKey, folderName); // Rafraîchit la liste
+    } else {
+      alert("Erreur lors de l'envoi du fichier.");
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+// 3. Rapport des Agents (Lecture seule)
+async function loadRapportAgents() {
+  pageActuelle = "loadRapportAgents";
+  
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 950px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📄 Rapport des Agents</h3>
+      <div style="margin-bottom: 20px;">
+        <input type="text" id="searchInput" placeholder="Rechercher un agent..." onkeyup="filterTable()" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+      </div>
+      <div id='rapportData' style="color: #6c757d; font-style: italic;">Chargement...</div>
+    </div>
+  `;
+  
+  const serverRes = await apiCall("admin_getRapportAgents");
+  const res = serverRes.data || serverRes;
+  const rapportContainer = document.getElementById("rapportData");
+
+  if (!rapportContainer) return;
+
+  if (res && res.success && res.data && res.data.length > 0) {
+    let html = `
+      <div style="overflow-x: auto; max-height: 450px; border: 1px solid #dee2e6; border-radius: 4px;">
+        <table id='agentTable' style='width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;'>
+          <thead>
+            <tr style='background: #2c3e50; color: white; position: sticky; top: 0;'>
+    `;
+    
+    // En-têtes
+    res.data[0].forEach(h => html += `<th style="padding: 12px; text-align: left;">${h}</th>`);
+    html += `</tr></thead><tbody>`;
+    
+    // Données
+    for (let i = 1; i < res.data.length; i++) {
+      html += `<tr style="border-bottom: 1px solid #e9ecef;">`;
+      res.data[i].forEach(cell => {
+        html += `<td style="padding: 10px 12px; color: #2c3e50;">${cell !== undefined && cell !== null ? cell : ""}</td>`;
+      });
+      html += `</tr>`;
+    }
+    
+    rapportContainer.innerHTML = html + "</tbody></table></div>";
+  } else {
+    rapportContainer.innerHTML = "<p style='color: #721c24; background: #fff3f3; padding: 15px; border-radius: 6px; border: 1px solid #f5c6cb; font-style: normal; margin: 0; text-align: center;'>Aucun rapport disponible ou erreur de chargement.</p>";
+  }
+}
+
+// Fonction de filtrage simple
+function filterTable() {
+  const searchInput = document.getElementById("searchInput");
+  if (!searchInput) return;
+  const input = searchInput.value.toLowerCase();
+  const table = document.getElementById("agentTable");
+  if (!table) return;
+  const tr = table.getElementsByTagName("tr");
+  
+  for (let i = 1; i < tr.length; i++) {
+    const tds = tr[i].getElementsByTagName("td");
+    let match = false;
+    for (let j = 0; j < tds.length; j++) {
+      if (tds[j].innerText.toLowerCase().includes(input)) {
+        match = true;
+        break;
+      }
+    }
+    tr[i].style.display = match ? "" : "none";
+  }
+}
+
+async function loadLogs() {
+  pageActuelle = "loadLogs";
+  const contentDiv = document.getElementById("content");
+  if (!contentDiv) return;
+
+  contentDiv.innerHTML = `
+    <div style="max-width: 950px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📜 Journal du Système (Logs)</h3>
+      <div id='logData' style="margin-top: 20px; color: #6c757d; font-style: italic;">Chargement...</div>
+    </div>
+  `;
+  
+  const serverRes = await apiCall("admin_getLogs");
+  const res = serverRes.data || serverRes;
+  const logDataDiv = document.getElementById("logData");
+
+  if (!logDataDiv) return;
+
+  if (res && res.success) {
+    if (res.data && res.data.length > 0) {
+      let html = `
+        <div style="overflow-x: auto; max-height: 450px; border: 1px solid #dee2e6; border-radius: 4px;">
+          <table style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
+            <thead>
+              <tr style="background: #2c3e50; color: white; position: sticky; top: 0;">
+                <th style="padding: 12px; text-align: left;">Date</th>
+                <th style="padding: 12px; text-align: left;">Email</th>
+                <th style="padding: 12px; text-align: left;">Utilisateur</th>
+                <th style="padding: 12px; text-align: left;">Action</th>
+                <th style="padding: 12px; text-align: left;">État</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      
+      // On boucle sur res.data qui contient les lignes
+      res.data.forEach(row => {
+        let etatStyle = "";
+        const etat = (row[4] || "").toString().toLowerCase();
+        if (etat.includes("succes") || etat.includes("done") || etat.includes("ok")) {
+          etatStyle = "color: #27ae60; font-weight: bold;";
+        } else if (etat.includes("err") || etat.includes("echec") || etat.includes("fail")) {
+          etatStyle = "color: #c0392b; font-weight: bold;";
+        }
+
+        html += `
+          <tr style="border-bottom: 1px solid #e9ecef;">
+            <td style="padding: 10px 12px; color: #7f8c8d; white-space: nowrap;">${row[0] || ""}</td>
+            <td style="padding: 10px 12px; color: #34495e;">${row[1] || ""}</td>
+            <td style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${row[2] || ""}</td>
+            <td style="padding: 10px 12px; color: #34495e;">${row[3] || ""}</td>
+            <td style="padding: 10px 12px; ${etatStyle}">${row[4] || ""}</td>
+          </tr>
+        `;
+      });
+      
+      logDataDiv.innerHTML = html + "</tbody></table></div>";
+    } else {
+      logDataDiv.innerHTML = "<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0;'>Aucun journal disponible.</p>";
+    }
+  } else {
+    logDataDiv.innerHTML = `<p style='color: #721c24; background: #fff3f3; padding: 15px; border-radius: 6px; border: 1px solid #f5c6cb; font-style: normal; margin: 0; text-align: center;'>Erreur : ${res ? res.res : "Erreur inconnue"}</p>`;
+  }
+}
+
+/** 🔐 Gestion des Accès (Interface mise à jour) */
+function loadUserManagement() {
+  pageActuelle = "loadUserManagement";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 900px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">🔐 Gestion des Accès</h3>
+      
+      <!-- Sélecteur de catégorie ajouté -->
+      <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+        <label style="font-weight: 500; font-size: 14px; color: #2c3e50;"><b>Sélectionnez la catégorie : </b></label>
+        <select id="configType" onchange="fetchUsers()" style="padding: 8px 12px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+          <option value="CONFIG_AGENT">AGENT</option>
+          <option value="CONFIG_ADMIN">ADMIN</option>
+          <option value="CONFIG_CAISSE">CAISSE</option>
+          <option value="CONFIG_PARENT">PARENT</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 6px; border: 1px solid #e9ecef;">
+        <h4 style="margin-top: 0; color: #2c3e50; font-size: 15px; margin-bottom: 15px;">➕ Ajouter un nouvel accès</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <input type="email" id="newEmail" placeholder="Email" style="padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;">
+          <input type="text" id="newPass" placeholder="Mot de passe" style="padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;">
+          <input type="text" id="newNom" placeholder="Nom complet" style="padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;">
+          <select id="newRole" style="padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+            <option value="AGENT">AGENT</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="CAISSE">CAISSE</option>
+            <option value="PARENT">PARENT</option>
+          </select>
+        </div>
+        <button onclick="handleAddUser()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; font-size: 14px; cursor: pointer; transition: background 0.2s;">Créer l'accès</button>
+      </div>
+      
+      <div id="userList" style="color: #6c757d; font-style: italic;">Chargement des comptes...</div>
+    </div>
+  `;
+  fetchUsers();
+}
+
+/** Récupère les utilisateurs selon la catégorie sélectionnée */
+async function fetchUsers() {
+  const configTypeEl = document.getElementById("configType");
+  const userListEl = document.getElementById("userList");
+  if (!configTypeEl || !userListEl) return;
+
+  const type = configTypeEl.value;
+  userListEl.innerHTML = `
+    <div style="text-align: center; color: #6c757d; font-style: italic; padding: 20px;">
+      Chargement...
+    </div>
+  `;
+  
+  const serverRes = await apiCall("admin_getUsers", { type: type });
+  const res = serverRes.data || serverRes;
+
+  if (res && res.success) {
+    if (res.data && res.data.length > 0) {
+      let html = `
+        <div style="overflow-x: auto; border: 1px solid #dee2e6; border-radius: 4px;">
+          <table style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
+            <thead>
+              <tr style="background: #2c3e50; color: white;">
+                <th style="padding: 12px; text-align: left;">Email</th>
+                <th style="padding: 12px; text-align: left;">Pass</th>
+                <th style="padding: 12px; text-align: left;">Nom</th>
+                <th style="padding: 12px; text-align: center; width: 100px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      
+      res.data.forEach((row, index) => {
+        html += `
+          <tr style="border-bottom: 1px solid #e9ecef;">
+            <td style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${row[0] || ""}</td>
+            <td style="padding: 10px 12px; color: #7f8c8d;">${row[1] || ""}</td>
+            <td style="padding: 10px 12px; color: #34495e;">${row[2] || ""}</td>
+            <td style="padding: 10px 12px; text-align: center;">
+              <button onclick="handleDeleteUser(${index})" style="background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 12px; cursor: pointer; transition: background 0.2s;">Supprimer</button>
+            </td>
+          </tr>
+        `;
+      });
+      userListEl.innerHTML = html + "</tbody></table></div>";
+    } else {
+      userListEl.innerHTML = "<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0; font-style: normal;'>Aucun utilisateur trouvé dans cette catégorie.</p>";
+    }
+  } else {
+    userListEl.innerHTML = `<p style='color: #721c24; background: #fff3f3; padding: 15px; border-radius: 6px; border: 1px solid #f5c6cb; font-style: normal; margin: 0; text-align: center;'>Erreur : ${res ? res.res : "Erreur inconnue"}</p>`;
+  }
+}
+
+async function handleAddUser() {
+  const type = document.getElementById("configType").value;
+  const email = document.getElementById("newEmail").value.trim();
+  const pass = document.getElementById("newPass").value.trim();
+  const nom = document.getElementById("newNom").value.trim();
+  const role = document.getElementById("newRole").value;
+  
+  if (!email || !pass) {
+    alert("Email et Mot de passe requis !");
+    return;
+  }
+  
+  const serverRes = await apiCall("admin_addUser", {
+    type: type,
+    email: email,
+    pass: pass,
+    nom: nom,
+    role: role
+  });
+  const res = serverRes.data || serverRes;
+
+  if (res && res.success) {
+    alert("Utilisateur ajouté !");
+    // Réinitialiser les champs de saisie du formulaire d'ajout
+    document.getElementById("newEmail").value = "";
+    document.getElementById("newPass").value = "";
+    document.getElementById("newNom").value = "";
+    fetchUsers(); // Rafraîchir la liste
+  } else {
+    alert("Erreur : " + (res && res.res ? res.res : "Erreur inconnue"));
+  }
+}
+
+async function handleDeleteUser(index) {
+  const type = document.getElementById("configType").value;
+  
+  if (confirm("Voulez-vous vraiment supprimer cet accès de " + type + " ?")) {
+    const serverRes = await apiCall("admin_deleteUser", {
+      type: type,
+      index: index
+    });
+    const res = serverRes.data || serverRes;
+
+    if (res && res.success) {
+      alert("Accès supprimé avec succès !");
+      fetchUsers(); // Rafraîchir la liste
+    } else {
+      alert("Erreur : " + (res && res.res ? res.res : "Erreur inconnue"));
+    }
+  }
+}
+
+// 2. Liste Élèves
+async function loadElevesList() {
+  pageActuelle = "loadElevesList";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 950px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">🎓 Liste Élèves</h3>
+      <div style="margin-bottom: 20px;">
+        <input type="text" id="searchEleve" placeholder="Rechercher un élève..." onkeyup="filterEleves()" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+      </div>
+      <div id='elevesData' style="color: #6c757d; font-style: italic;">Chargement...</div>
+    </div>
+  `;
+  
+  const serverRes = await apiCall("admin_getEleves");
+  const res = serverRes.data || serverRes;
+  const elevesContainer = document.getElementById("elevesData");
+
+  if (!elevesContainer) return;
+
+  if (res && res.success && res.data) {
+    const generateTable = (data, title) => {
+      if (!data || data.length <= 1) {
+        return `
+          <div style="margin-bottom: 20px;">
+            <h4 style="color: #2c3e50; border-bottom: 1px solid #e9ecef; padding-bottom: 6px; font-size: 15px;">${title}</h4>
+            <p style="color: #7f8c8d; font-size: 14px; font-style: normal; margin: 5px 0;">Aucune donnée disponible</p>
+          </div>
+        `;
+      }
+      
+      let table = `
+        <div style="margin-bottom: 25px;">
+          <h4 style="color: #2c3e50; border-bottom: 1px solid #e9ecef; padding-bottom: 6px; font-size: 15px;" class="section-title">${title}</h4>
+          <div style="overflow-x: auto; max-height: 350px; border: 1px solid #dee2e6; border-radius: 4px; margin-top: 10px;">
+            <table class="eleveTable" style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
+      `;
+      
+      data.forEach((row, index) => {
+        if (index === 0) {
+          table += `<thead style="background: #2c3e50; color: white; position: sticky; top: 0;"><tr>`;
+          row.forEach(cell => {
+            table += `<th style="padding: 12px; text-align: left;">${cell !== undefined && cell !== null ? cell : ""}</th>`;
+          });
+          table += `</tr></thead><tbody>`;
+        } else {
+          table += `<tr style="border-bottom: 1px solid #e9ecef;">`;
+          row.forEach(cell => {
+            table += `<td style="padding: 10px 12px; color: #2c3e50;">${cell !== undefined && cell !== null ? cell : ""}</td>`;
+          });
+          table += `</tr>`;
+        }
+      });
+      return table + `</tbody></table></div></div>`;
+    };
+
+    elevesContainer.innerHTML = 
+      generateTable(res.data.maternelle, "🎓 Maternelle") +
+      generateTable(res.data.primaire, "📚 Primaire") +
+      generateTable(res.data.secondaire, "🎒 Secondaire");
+  } else {
+    elevesContainer.innerHTML = "<p style='color: #721c24; background: #fff3f3; padding: 15px; border-radius: 6px; border: 1px solid #f5c6cb; font-style: normal; margin: 0; text-align: center;'>Erreur lors du chargement de la liste des élèves.</p>";
+  }
+}
+
+function filterEleves() {
+  const searchInput = document.getElementById("searchEleve");
+  if (!searchInput) return;
+  const input = searchInput.value.toLowerCase();
+  const tables = document.querySelectorAll(".eleveTable");
+  
+  tables.forEach(table => {
+    const rows = table.getElementsByTagName("tr");
+    for (let i = 1; i < rows.length; i++) { // On saute l'en-tête (i=0)
+      const text = rows[i].innerText.toLowerCase();
+      rows[i].style.display = text.includes(input) ? "" : "none";
+    }
+  });
+}
+
+/** 📄 Affichage Rapport Agents */
+async function loadRapportAgents() {
+  pageActuelle = "loadRapportAgents";
+  
+  // 1. Initialisation de l'affichage
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 950px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📄 Rapport des Agents</h3>
+      <div style="margin-bottom: 20px;">
+        <input type="text" id="searchAgent" placeholder="Rechercher par nom..." 
+               onkeyup="filterAgentTable()" 
+               style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+      </div>
+      <div id='rapportData' style="color: #6c757d; font-style: italic;">Chargement...</div>
+    </div>
+  `;
+  
+  // 2. Appel au serveur avec gestion d'erreur
+  const serverRes = await apiCall("admin_getRapportAgents");
+  const res = serverRes.data || serverRes;
+  const rapportDataContainer = document.getElementById("rapportData");
+
+  if (!rapportDataContainer) return;
+
+  if (res && res.success && res.data && res.data.length > 0) {
+    let html = `
+      <div style="overflow-x: auto; max-height: 450px; border: 1px solid #dee2e6; border-radius: 4px;">
+        <table id='tableRapport' style='width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;'>
+    `;
+    
+    // En-tête
+    html += `<thead><tr style='background: #2c3e50; color: white; position: sticky; top: 0;'>` + 
+            res.data[0].map(h => `<th style="padding: 12px; text-align: left; white-space: nowrap;">${h}</th>`).join("") + 
+            `</tr></thead><tbody>`;
+    
+    // Lignes
+    for (let i = 1; i < res.data.length; i++) {
+      html += `<tr class="agentRow" style="border-bottom: 1px solid #e9ecef;">` + 
+              res.data[i].map(c => `<td style="padding: 10px 12px; color: #2c3e50;">${c !== undefined && c !== null ? c : ""}</td>`).join("") + 
+              `</tr>`;
+    }
+    rapportDataContainer.innerHTML = html + "</tbody></table></div>";
+  } else if (res && !res.success) {
+    rapportDataContainer.innerHTML = `<p style='color: #721c24; background: #fff3f3; padding: 15px; border-radius: 6px; border: 1px solid #f5c6cb; font-style: normal; margin: 0; text-align: center;'>Erreur serveur : ${res.res}</p>`;
+  } else {
+    rapportDataContainer.innerHTML = `<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0; font-style: normal;'>Aucune donnée trouvée.</p>`;
+  }
+}
+
+/** 🔍 Filtrage Agents */
+function filterAgentTable() {
+  const searchInput = document.getElementById("searchAgent");
+  if (!searchInput) return; // Sécurité : évite l'erreur si la page change
+  
+  const input = searchInput.value.toLowerCase();
+  const rows = document.querySelectorAll(".agentRow");
+  
+  rows.forEach(row => {
+    // Affiche la ligne seulement si le texte correspond
+    row.style.display = row.innerText.toLowerCase().includes(input) ? "" : "none";
+  });
+}
+
+/**
+ * Affiche le formulaire d'insertion
+ */
+function openInsertionEleve() {
+  pageActuelle = "openInsertionEleve";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 600px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">➕ Ajouter un nouvel élève</h3>
+      <form id="formEleve" onsubmit="event.preventDefault(); saveEleve();" style="margin-top: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Nom complet *</label>
+            <input type="text" id="nomEleve" placeholder="Nom complet" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;" required>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div>
+              <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Section *</label>
+              <select id="sectionEleve" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+                <option value="Maternelle">Maternelle</option>
+                <option value="Primaire">Primaire</option>
+                <option value="Secondaire">Secondaire</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Classe (ex: 1ère A) *</label>
+              <input type="text" id="classeEleve" placeholder="Classe" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div>
+              <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Email parent *</label>
+              <input type="email" id="emailParent" placeholder="Email parent" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;" required>
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Tél parent *</label>
+              <input type="text" id="telParent" placeholder="Tél parent" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;" required>
+            </div>
+          </div>
+
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Genre *</label>
+            <select id="genreEleve" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+              <option value="M">Garçon</option>
+              <option value="F">Fille</option>
+            </select>
+          </div>
+          
+          <div style="margin-top: 10px;">
+            <button type="submit" id="btnSave" style="background: #27ae60; color: white; border: none; padding: 12px 20px; border-radius: 4px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; transition: background 0.2s;">Enregistrer l'élève</button>
+          </div>
+        </div>
+      </form>
+    </div>`;
+}
+
+/**
+ * Envoie les données du formulaire au serveur
+ */
+async function saveEleve() {
+  const btn = document.getElementById("btnSave");
+  
+  // CORRECTION : Ajout de la récupération de 'sectionEleve'
+  const data = {
+    nom: document.getElementById("nomEleve").value.trim(),
+    section: document.getElementById("sectionEleve").value, // OBLIGATOIRE pour choisir la feuille
+    classe: document.getElementById("classeEleve").value.trim(), // La classe (colonne B)
+    email: document.getElementById("emailParent").value.trim(),
+    tel: document.getElementById("telParent").value.trim(),
+    genre: document.getElementById("genreEleve").value
+  };
+
+  // CORRECTION : Ajout de 'section' et 'classe' dans la validation
+  if (!data.nom || !data.section || !data.classe || !data.email) {
+    alert("Veuillez remplir tous les champs obligatoires.");
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Enregistrement...";
+    btn.style.opacity = "0.7";
+  }
+
+  const serverRes = await apiCall("admin_addEleve", data);
+  const res = serverRes.data || serverRes;
+
+  if (res && res.success) {
+    alert("Succès : " + (res.message || "Élève enregistré avec succès"));
+    const form = document.getElementById("formEleve");
+    if (form) form.reset();
+    if (typeof loadElevesList === 'function') loadElevesList();
+  } else {
+    alert("Erreur : " + (res && res.message ? res.message : (res && res.res ? res.res : "Erreur inconnue")));
+  }
+
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Enregistrer l'élève";
+    btn.style.opacity = "1";
+  }
+}
+
+/**
+ * Fonction pour supprimer un élève
+ * Elle demande la section pour cibler la bonne feuille et le nom pour trouver la ligne
+ */
+async function openSuppressionEleve() {
+  // 1. Demander la section (pour savoir où chercher)
+  const section = prompt("Dans quelle section se trouve l'élève ? (Maternelle, Primaire ou Secondaire)");
+  if (!section || (section !== "Maternelle" && section !== "Primaire" && section !== "Secondaire")) {
+    alert("Section invalide. Veuillez saisir Maternelle, Primaire ou Secondaire.");
+    return;
+  }
+
+  // 2. Demander le nom de l'élève
+  const nom = prompt("Entrez le NOM EXACT de l'élève à supprimer :");
+  if (!nom || nom.trim() === "") return;
+
+  // 3. Confirmation finale
+  if (confirm("⚠️ ATTENTION : Vous allez supprimer définitivement " + nom.trim() + " de la section " + section + ". Êtes-vous sûr ?")) {
+    const serverRes = await apiCall("admin_deleteEleve", {
+      nom: nom.trim(),
+      section: section
+    });
+    const res = serverRes.data || serverRes;
+
+    if (res && res.success) {
+      alert("Succès : " + (res.message || "Élève supprimé avec succès"));
+      // Recharge la liste si la fonction existe
+      if (typeof loadElevesList === 'function') loadElevesList();
+    } else {
+      alert("Erreur : " + (res && res.message ? res.message : (res && res.res ? res.res : "Erreur inconnue")));
+    }
+  }
+}
+
+/**
+ * Affiche le formulaire d'insertion pour un parent
+ */
+function openInsertionParent() {
+  pageActuelle = "openInsertionParent";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 650px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">➕ Ajouter un Parent / Enfants</h3>
+      
+      <form id="formParent" onsubmit="event.preventDefault(); saveParent();" style="margin-top: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <div>
+            <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Nom complet du Parent *</label>
+            <input type="text" id="nomParent" placeholder="Nom complet du Parent" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div>
+              <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Adresse Mail *</label>
+              <input type="email" id="mailParent" placeholder="Adresse Mail" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;" required>
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Téléphone *</label>
+              <input type="text" id="telParent" placeholder="Tél (ex: 099xxxxxxx)" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;" required>
+            </div>
+          </div>
+          
+          <div style="margin-top: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #2c3e50; font-size: 15px; border-bottom: 1px solid #e9ecef; padding-bottom: 5px;">Informations des enfants</h4>
+            <div id="containerEnfants" style="display: flex; flex-direction: column; gap: 12px;">
+              <div class="enfant-block" style="background: #f8f9fa; padding: 15px; border: 1px solid #e9ecef; border-radius: 6px;">
+                <div style="display: grid; grid-template-columns: 2fr 1.5fr 1fr; gap: 10px;">
+                  <input type="text" class="nomEnfant" placeholder="Nom de l'enfant" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" required>
+                  <input type="text" class="classeEnfant" placeholder="Classe" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" required>
+                  <select class="genreEnfant" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+                    <option value="M">Masculin</option>
+                    <option value="F">Féminin</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <button type="button" onclick="ajouterChampEnfant()" style="background: #3498db; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-size: 13px; font-weight: bold; cursor: pointer; transition: background 0.2s;">➕ Ajouter un autre enfant</button>
+          </div>
+          
+          <div style="margin-top: 15px;">
+            <button type="submit" id="btnSaveParent" style="background: #27ae60; color: white; border: none; padding: 12px 20px; border-radius: 4px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; transition: background 0.2s;">Enregistrer le Parent et ses enfants</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  `;
+}
+
+// Fonction pour ajouter dynamiquement des champs
+function ajouterChampEnfant() {
+  const container = document.getElementById("containerEnfants");
+  if (!container) return;
+
+  const div = document.createElement('div');
+  div.className = 'enfant-block';
+  div.style.cssText = "background: #f8f9fa; padding: 15px; border: 1px solid #e9ecef; border-radius: 6px;";
+  div.innerHTML = `
+    <div style="display: grid; grid-template-columns: 2fr 1.5fr 1fr; gap: 10px;">
+      <input type="text" class="nomEnfant" placeholder="Nom de l'enfant" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" required>
+      <input type="text" class="classeEnfant" placeholder="Classe" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" required>
+      <select class="genreEnfant" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+        <option value="M">Masculin</option>
+        <option value="F">Féminin</option>
+      </select>
+    </div>
+  `;
+  container.appendChild(div);
+}
+
+async function saveParent() {
+  const btn = document.getElementById("btnSaveParent");
+  
+  // Récupération de tous les enfants saisis (si le backend gère les tableaux, ou adaptation du premier pour compatibilité)
+  const nomsEnfants = document.querySelectorAll(".nomEnfant");
+  const classesEnfants = document.querySelectorAll(".classeEnfant");
+  
+  const data = {
+    nomParent: document.getElementById("nomParent").value.trim(),
+    nomEnfant: nomsEnfants.length > 0 ? nomsEnfants[0].value.trim() : "",
+    classe: classesEnfants.length > 0 ? classesEnfants[0].value.trim() : "",
+    email: document.getElementById("mailParent").value.trim(),
+    tel: document.getElementById("telParent").value.trim()
+  };
+
+  if (!data.nomParent || !data.email) {
+    alert("Veuillez remplir les informations obligatoires du parent.");
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Enregistrement...";
+    btn.style.opacity = "0.7";
+  }
+
+  const serverRes = await apiCall("admin_addParent", data);
+  const res = serverRes.data || serverRes;
+
+  if (res && res.success) {
+    alert("Succès : " + (res.message || "Parent enregistré avec succès"));
+    if (typeof loadParentsList === 'function') {
+      loadParentsList();
+    } else {
+      const form = document.getElementById("formParent");
+      if (form) form.reset();
+    }
+  } else {
+    alert("Erreur : " + (res && res.message ? res.message : (res && res.res ? res.res : "Erreur inconnue")));
+  }
+
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Enregistrer le Parent et ses enfants";
+    btn.style.opacity = "1";
+  }
+}
+
+/**
+ * Fonction pour supprimer un parent et ses enfants associés
+ */
+async function openSuppressionParent() {
+  const nom = prompt("Entrez le NOM EXACT du parent à supprimer :");
+  if (!nom || nom.trim() === "") return;
+
+  if (confirm("⚠️ ATTENTION : Vous allez supprimer le parent '" + nom.trim() + "' et toutes ses lignes associées. Êtes-vous sûr ?")) {
+    const serverRes = await apiCall("admin_deleteParent", { nom: nom.trim() });
+    const res = serverRes.data || serverRes;
+
+    if (res && res.success) {
+      alert("Succès : " + (res.message || "Parent supprimé avec succès"));
+      if (typeof loadParentsList === 'function') loadParentsList();
+    } else {
+      alert("Erreur : " + (res && res.message ? res.message : (res && res.res ? res.res : "Erreur inconnue")));
+    }
+  }
+}
+
+async function saveParent() {
+  const btn = document.getElementById("btnSaveParent");
+  
+  // 1. Récupération de toutes les listes (avec la classe 'genreEnfant' ajoutée)
+  const nomsEnfants = Array.from(document.querySelectorAll('.nomEnfant')).map(el => el.value.trim());
+  const classesEnfants = Array.from(document.querySelectorAll('.classeEnfant')).map(el => el.value.trim());
+  const genresEnfants = Array.from(document.querySelectorAll('.genreEnfant')).map(el => el.value);
+  
+  // 2. Construction de l'objet data incluant les genres
+  const data = {
+    nomParent: document.getElementById("nomParent").value.trim(),
+    email: document.getElementById("mailParent").value.trim(),
+    tel: document.getElementById("telParent").value.trim(),
+    enfants: nomsEnfants,
+    classes: classesEnfants,
+    genres: genresEnfants // <--- AJOUT CRUCIAL
+  };
+
+  // 3. Validation
+  if (!data.nomParent || data.enfants.length === 0 || data.enfants.some(e => !e)) {
+    alert("Veuillez remplir le nom du parent et tous les champs des enfants.");
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Enregistrement...";
+    btn.style.opacity = "0.7";
+  }
+
+  const serverRes = await apiCall("admin_addParentMultiple", data);
+  const res = serverRes.data || serverRes;
+
+  if (res && res.success) {
+    alert(res.message || "Parent et enfants enregistrés avec succès !");
+    if (typeof loadParentsList === 'function') {
+      loadParentsList();
+    } else {
+      const form = document.getElementById("formParent");
+      if (form) form.reset();
+    }
+  } else {
+    alert("Erreur serveur : " + (res && res.message ? res.message : (res && res.res ? res.res : "Erreur inconnue")));
+  }
+
+  if (btn) {
+    btn.disabled = false;
+    btn.innerText = "Enregistrer le Parent et ses enfants";
+    btn.style.opacity = "1";
+  }
+}
+
+/**
+ * Ajoute dynamiquement une nouvelle ligne pour un enfant supplémentaire
+ */
+function ajouterChampEnfant() {
+  const container = document.getElementById("containerEnfants");
+  if (!container) return;
+
+  const div = document.createElement('div');
+  div.className = 'enfant-block';
+  div.style.cssText = "margin-top: 10px; padding: 15px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px;";
+  
+  div.innerHTML = `
+    <div style="display: grid; grid-template-columns: 2fr 1.5fr 1fr; gap: 10px;">
+      <input type="text" class="nomEnfant" placeholder="Nom de l'enfant" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" required>
+      <input type="text" class="classeEnfant" placeholder="Classe" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" required>
+      <select class="genreEnfant" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+        <option value="M">Masculin</option>
+        <option value="F">Féminin</option>
+      </select>
+    </div>`;
+  
+  container.appendChild(div);
+}
+
+function openCommunicationPanel() {
+  pageActuelle = "openCommunicationPanel";
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 700px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📢 Communiqué aux parents</h3>
+      
+      <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+        <div>
+          <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Objet du communiqué *</label>
+          <input type="text" id="commObject" placeholder="Objet du communiqué" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+        </div>
+        
+        <div>
+          <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Message *</label>
+          <textarea id="commBody" rows="8" placeholder="Rédigez votre message..." style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px; resize: vertical;"></textarea>
+        </div>
+        
+        <div>
+          <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Cible (Section)</label>
+          <select id="commSection" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+            <option value="TOUTES">Toutes les sections</option>
+            <option value="MATERNELLE">Maternelle uniquement</option>
+            <option value="PRIMAIRE">Primaire uniquement</option>
+            <option value="SECONDAIRE">Secondaire uniquement</option>
+          </select>
+        </div>
+        
+        <div style="margin-top: 10px;">
+          <button onclick="envoyerAuClick()" style="background: #2980b9; color: white; border: none; padding: 12px 20px; border-radius: 4px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; transition: background 0.2s;">Envoyer le communiqué</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function envoyerAuClick(event) {
+    const btn = event ? event.target : document.querySelector("button[onclick*='envoyerAuClick']"); // Cible le bouton cliqué ou le récupère via le DOM
+    const data = {
+        objet: document.getElementById('commObject').value.trim(),
+        message: document.getElementById('commBody').value.trim(),
+        section: document.getElementById('commSection').value
+    };
+
+    if (!data.objet || !data.message) {
+        alert("Veuillez remplir l'objet et le message.");
+        return;
+    }
+
+    if (btn) {
+        btn.disabled = true;
+        btn.innerText = "Envoi en cours...";
+        btn.style.opacity = "0.7";
+    }
+
+    const serverRes = await apiCall("sendCommunication", data);
+    const res = serverRes.data || serverRes;
+
+    if (res && res.success) {
+        alert(res.message || "Communiqué envoyé avec succès !");
+        // Réinitialisation optionnelle du formulaire après succès
+        document.getElementById('commObject').value = "";
+        document.getElementById('commBody').value = "";
+    } else {
+        alert("Erreur : " + (res && res.message ? res.message : (res && res.res ? res.res : "Échec de l'envoi")));
+    }
+
+    if (btn) {
+        btn.disabled = false;
+        btn.innerText = "Envoyer le communiqué";
+        btn.style.opacity = "1";
+    }
+}
+
+function openFormulaireActivite() {
+    pageActuelle = "openFormulaireActivite";
+    document.getElementById("content").innerHTML = `
+        <div style="max-width: 600px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+            <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📤 Poster une activité scolaire</h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Titre de l'activité *</label>
+                    <input type="text" id="actTitre" placeholder="Titre de l'activité" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Type de média *</label>
+                    <select id="actType" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #fff; font-size: 14px;">
+                        <option value="Photo">Photo (Dossier Drive)</option>
+                        <option value="Video">Vidéo (Lien YouTube)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 500; font-size: 13px; color: #2c3e50;">Lien (URL) *</label>
+                    <input type="text" id="actLien" placeholder="Lien (URL)" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <button onclick="sauvegarderActivite()" style="background: #27ae60; color: white; border: none; padding: 12px 20px; border-radius: 4px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; transition: background 0.2s;">Publier</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+async function sauvegarderActivite() {
+    const titre = document.getElementById("actTitre").value;
+    const type = document.getElementById("actType").value;
+    const lien = document.getElementById("actLien").value;
+    
+    if (!titre || !lien) {
+      alert("Veuillez remplir tous les champs.");
+      return;
+    }
+
+    const res = await apiCall("posterActivite", { titre, type, lien });
+
+    if (res.success) {
+      alert("Activité publiée !");
+      openFormulaireActivite();
+    } else {
+      alert("Erreur : " + (res.message || "Impossible de publier"));
+    }
+}
+
+async function loadActivitesScolaires() {
+    document.getElementById("content").innerHTML = "<h3>Chargement des activités...</h3>";
+    
+    const res = await apiCall("getActivites");
+    const activites = res.data || res;
+
+    if (Array.isArray(activites)) {
+        let html = `<h3>🖼️ Galerie des activités</h3><div class="grid-container">`;
+        activites.forEach(act => {
+            html += `
+                <div class="card-activite">
+                    <h4>${act.titre}</h4>
+                    ${act.type === 'Video' ? `<iframe width="100%" src="${act.lien}" frameborder="0" allowfullscreen></iframe>` 
+                                            : `<a href="${act.lien}" target="_blank">Voir la photo / Dossier</a>`}
+                </div>`;
+        });
+        html += `</div>`;
+        document.getElementById("content").innerHTML = html;
+    } else {
+        document.getElementById("content").innerHTML = "<h3>Erreur lors du chargement des activités.</h3>";
+    }
+}
+
+function loadParentsList() {
+    const container = document.getElementById("content");
+    container.innerHTML = "Chargement en cours...";
+
+    google.script.run
+        .withSuccessHandler(function(parents) {
+            if (!parents || parents.length === 0) {
+                container.innerHTML = "Aucune donnée trouvée.";
+                return;
+            }
+
+            // Construction du tableau avec la colonne E (Genre)
+            // p[0]=Parent, p[1]=Enfant, p[2]=Classe, p[3]=Email, p[4]=Genre, p[5]=Tel
+            let rows = parents.map(p => `
+                <tr>
+                    <td style="padding:8px;">${p[0] || ''}</td> 
+                    <td style="padding:8px;">${p[1] || ''}</td> 
+                    <td style="padding:8px;">${p[2] || ''}</td> 
+                    <td style="padding:8px;">${p[3] || ''}</td> 
+                    <td style="padding:8px;">${p[4] || ''}</td> 
+                    <td style="padding:8px;">${p[5] || ''}</td> 
+                </tr>`).join('');
+
+            container.innerHTML = `
+                <div style="margin-bottom:15px;">
+                    <input type="text" id="parentSearch" onkeyup="filtrerParents()" 
+                    placeholder="🔍 Rechercher par nom de parent ou d'enfant..." 
+                    style="width:100%; padding:12px; border:1px solid #ccc; border-radius:5px;">
+                </div>
+                <div style="overflow-x:auto;">
+                    <table id="parentsTable" border="1" style="width:100%; border-collapse:collapse; background:white;">
+                        <tr style="background:#007bff; color:white;">
+                            <th>Parent</th><th>Enfants</th><th>Classe</th><th>Email</th><th>Genre</th><th>Tél</th>
+                        </tr>
+                        ${rows}
+                    </table>
+                </div>`;
+        })
+        .withFailureHandler(function(err) {
+            container.innerHTML = "Erreur : " + err;
+        })
+        .getListeParentsComplet();
+}
+
+function ajouterChampEnfant() {
+    const container = document.getElementById("containerEnfants");
+    const div = document.createElement('div');
+    div.className = 'enfant-block';
+    div.style.marginTop = "10px";
+    div.innerHTML = `
+        <hr>
+        <input type="text" class="nomEnfant" placeholder="Nom de l'enfant" style="width:30%; padding:8px;" required>
+        <input type="text" class="classeEnfant" placeholder="Classe" style="width:30%; padding:8px;" required>
+        <select class="genreEnfant" style="width:30%; padding:8px;">
+            <option value="M">Masculin</option>
+            <option value="F">Féminin</option>
+        </select>`;
+    container.appendChild(div);
+}
+
+function openProclamationPanel() {
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 500px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+        <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">🚀 Proclamation des Résultats</h3>
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Section :</label>
+            <select id="sectionProclamation" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #f8f9fa; font-size: 14px;">
+                <option value="TOUTES">Toutes les sections</option>
+                <option value="MATERNELLE">Maternelle</option>
+                <option value="PRIMAIRE">Primaire</option>
+                <option value="SECONDAIRE">Secondaire</option>
+            </select>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Montant requis ($) :</label>
+            <input type="number" id="montantSeuil" placeholder="ex: 500" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+        </div>
+        
+        <button id="btnProclamer" onclick="lancerProclamationProcess()" style="width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+            Lancer la Proclamation
+        </button>
+    </div>
+  `;
+}
+
+async function lancerProclamationProcess() {
+    const btn = document.getElementById("btnProclamer");
+    const montant = document.getElementById("montantSeuil").value;
+    const section = document.getElementById("sectionProclamation").value;
+    
+    if (!montant || montant <= 0) {
+        alert("Veuillez entrer un montant valide.");
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Traitement en cours...";
+    btn.style.opacity = "0.7";
+
+    const data = { montantRequis: montant, section: section };
+
+    const res = await apiCall("lancerProclamation", data);
+
+    if (res.success) {
+        alert(res.message || "Proclamation lancée avec succès !");
+    } else {
+        alert("Erreur : " + (res.message || "Échec de la proclamation"));
+    }
+
+    btn.disabled = false;
+    btn.innerText = "Lancer la Proclamation";
+    btn.style.opacity = "1";
+}
+
+/**
+ * 👑 EIEM ERP - MODULE FRONTEND PARENT
+ */
+
+
+// 1. Charger la liste des enfants et leur accès bulletin
+function loadEspaceParent(nomParent) {
+    document.getElementById("content").innerHTML = "<h3>Chargement de vos données...</h3>";
+    
+    google.script.run.withSuccessHandler(function(enfants) {
+        let html = `<h3>Mes Enfants</h3>`;
+        if (enfants.length === 0) {
+            html += `<p>Aucun enfant trouvé pour ce compte.</p>`;
+        } else {
+            enfants.forEach(e => {
+                html += `
+                    <div class="card" style="border:1px solid #ccc; padding:15px; margin:10px 0; border-radius:8px;">
+                        <p><strong>${e.nomEnfant}</strong> - Classe : ${e.classe}</p>
+                        <button onclick="recupererBulletin('${e.nomEnfant}')" 
+                                class="${e.acces ? 'btn-active' : 'btn-disabled'}">
+                            ${e.acces ? '📄 Télécharger Bulletin' : '🚫 Accès verrouillé (Paiement)'}
+                        </button>
+                    </div>`;
+            });
+        }
+        document.getElementById("content").innerHTML = html;
+    }).getEnfantsDuParent(nomParent);
+}
+
+// 4. Affichage Communiqués (Côté client)
+async function loadCommuniqueParent() {
+    const container = document.getElementById("content");
+    container.innerHTML = `<p style="padding:20px;">Chargement du communiqué...</p>`;
+    
+    const res = await apiCall("getDernierCommunique");
+    const communique = res.data || res;
+
+    if (communique && (communique.objet || communique.contenu)) {
+        container.innerHTML = `
+            <div class="card" style="max-width: 600px; margin: 20px auto; border-left: 5px solid #d9534f; padding: 25px; background: #fff5f5; color: #333333; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: sans-serif;">
+                <h3 style="color: #d9534f; margin-top: 0;">📢 ${communique.objet || "Communiqué"}</h3>
+                <p style="margin: 5px 0; font-size: 13px; color: #666;"><strong>Date :</strong> ${communique.date || ""}</p>
+                <p style="font-size: 1.05em; margin-top: 15px; color: #2c3e50; line-height: 1.5;">${communique.contenu || ""}</p>
+                <hr style="border: 0; border-top: 1px solid #e9ecef; margin: 20px 0;">
+                <small style="color: #6c757d; font-weight: bold;">Section : ${communique.section || "TOUTES"}</small>
+            </div>`;
+    } else {
+        container.innerHTML = `<p style="padding: 20px; text-align: center; color: #6c757d;">Aucun communiqué disponible pour le moment.</p>`;
+    }
+}
+
+async function loadActivitesScolaires() {
+    const container = document.getElementById("content");
+    container.innerHTML = "<h3>🖼️ Activités Scolaires</h3><p>Chargement des activités...</p>";
+    
+    const res = await apiCall("getActivites");
+    const activites = res.data || res;
+
+    if (!Array.isArray(activites) || activites.length === 0) {
+        container.innerHTML = "<h3>🖼️ Activités Scolaires</h3><p style='color: #6c757d;'>Aucune activité pour le moment.</p>";
+        return;
+    }
+
+    let html = `<h3>🖼️ Activités Scolaires</h3><div style="display: flex; gap: 20px; flex-wrap: row; justify-content: flex-start; margin-top: 15px;">`;
+    
+    activites.forEach(act => {
+        let mediaPreview = "";
+        let lienSafe = act.lien || "#";
+        
+        if (act.type === 'Video') {
+            let embedUrl = lienSafe.replace("view", "preview");
+            mediaPreview = `<iframe width="250" height="150" src="${embedUrl}" frameborder="0" allowfullscreen style="border-radius: 4px;"></iframe>`;
+        } else {
+            mediaPreview = `<img src="${lienSafe}" style="width: 250px; height: 150px; object-fit: cover; border-radius: 5px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x150?text=Apercu+Indisponible';">`;
+        }
+
+        html += `
+            <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 8px; width: 270px; text-align: center; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-family: sans-serif;">
+                <h4 style="color: #2c3e50; margin-top: 0; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${act.titre}">${act.titre}</h4>
+                <div style="margin-bottom: 12px;">${mediaPreview}</div>
+                <div>
+                    <a href="${lienSafe}" target="_blank" style="text-decoration:none;">
+                        <button style="width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;">
+                            ${act.type === 'Video' ? '▶ Ouvrir la Vidéo' : '📸 Ouvrir l\'Album'}
+                        </button>
+                    </a>
+                </div>
+            </div>`;
+    });
+    
+    html += `</div>`;
+    container.innerHTML = html;
+}
+
+// --- FONCTIONS FRONTEND MODULE PARENT (Préfixées) ---
+
+
+let parent_listeElevesActuelle = [];
+
+function loadPaiementADistance() {
+    document.getElementById("content").innerHTML = `
+        <div style="max-width: 500px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+            <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">💳 Saisie des informations de paiement</h3>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Section :</label>
+                <select id="parent_selectSection" onchange="parent_chargerListeEleves()" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #f8f9fa; font-size: 14px;">
+                    <option value="">-- Choisir la section --</option>
+                    <option value="MATERNELLE">MATERNELLE</option>
+                    <option value="PRIMAIRE">PRIMAIRE</option>
+                    <option value="SECONDAIRE">SECONDAIRE</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 15px; position: relative;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Élève :</label>
+                <input type="text" id="parent_nomEleve" placeholder="🔍 Rechercher un élève..." oninput="parent_filtrerListe()" autocomplete="off" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                <div id="parent_listeResultats" style="position: absolute; width: 100%; border: 1px solid #ced4da; max-height: 150px; overflow-y: auto; display: none; background: white; z-index: 1000; border-radius: 0 0 4px 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></div>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Classe :</label>
+                <input type="text" id="parent_classe" placeholder="Classe (remplissage auto)" readonly style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #e9ecef; box-sizing: border-box; font-size: 14px; color: #6c757d;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Email du parent :</label>
+                <input type="email" id="parent_emailParent" placeholder="ex: parent@gmail.com" required style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Type de frais :</label>
+                <select id="parent_typeFrais" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #f8f9fa; font-size: 14px;">
+                    <option value="">-- Choisir le type de frais --</option>
+                    <option value="Frais d'Inscription">Frais d'Inscription</option>
+                    <option value="Minerval 1er Trimestre">Minerval 1er Trimestre</option>
+                    <option value="Minerval 2ème Trimestre">Minerval 2ème Trimestre</option>
+                    <option value="Minerval 3ème Trimestre">Minerval 3ème Trimestre</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Montant en Dollars ($) :</label>
+                <input type="number" id="parent_montant" placeholder="ex: 150" required style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+            </div>
+            
+            <button onclick="parent_afficherMethodesPaiement()" style="width: 100%; padding: 12px; background: #27ae60; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+                Suivant : Choisir le paiement
+            </button>
+        </div>
+        <div id="parent_methodesPaiement" style="margin-top:20px; text-align: center;"></div>
+    `;
+}
+
+async function parent_chargerListeEleves() {
+    const section = document.getElementById("parent_selectSection").value;
+    const inputEleve = document.getElementById("parent_nomEleve");
+    
+    if (!section) return;
+    
+    inputEleve.placeholder = "Chargement des élèves...";
+    inputEleve.disabled = true;
+
+    const res = await apiCall("getElevesParSection", { section });
+    const eleves = res.data || res;
+
+    parent_listeElevesActuelle = Array.isArray(eleves) ? eleves : [];
+    
+    inputEleve.placeholder = "🔍 Écrire le nom de l'élève...";
+    inputEleve.disabled = false;
+}
+
+function parent_filtrerListe() {
+    const recherche = document.getElementById("parent_nomEleve").value.toLowerCase();
+    const divRes = document.getElementById("parent_listeResultats");
+    
+    if (recherche.length < 2) {
+        divRes.style.display = "none";
+        divRes.innerHTML = "";
+        return;
+    }
+
+    const filtrés = parent_listeElevesActuelle.filter(e => (e.nom || "").toLowerCase().includes(recherche));
+    
+    if (filtrés.length === 0) {
+        divRes.style.display = "block";
+        divRes.innerHTML = `<div style="padding: 10px; color: #6c757d; text-align: center; font-size: 14px;">Aucun élève trouvé</div>`;
+        return;
+    }
+
+    divRes.style.display = "block";
+    divRes.innerHTML = filtrés.map(e => `
+        <div onclick="parent_selectionnerEleve('${(e.nom || '').replace(/'/g, "\\'")}', '${(e.classe || '').replace(/'/g, "\\'")}', '${(e.email || '').replace(/'/g, "\\'")}')" 
+             style="padding: 10px; cursor: pointer; border-bottom: 1px solid #e9ecef; font-size: 14px; transition: background 0.2s;"
+             onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='white'">
+            <strong style="color: #2c3e50;">${e.nom}</strong> <span style="color: #6c757d;">- ${e.classe || 'N/A'}</span>
+        </div>
+    `).join('');
+}
+
+function parent_selectionnerEleve(nom, classe, email) {
+    document.getElementById("parent_nomEleve").value = nom || "";
+    document.getElementById("parent_classe").value = (classe === "undefined") ? "" : (classe || "");
+    document.getElementById("parent_emailParent").value = (email === "undefined") ? "" : (email || "");
+    
+    const divRes = document.getElementById("parent_listeResultats");
+    divRes.style.display = "none";
+    divRes.innerHTML = "";
+}
+
+// --- MODULE PARENT : LOGIQUE DE PAIEMENT SÉCURISÉE ---
+
+// Variable globale isolée pour stocker les données temporaires
+let parent_tempPaymentData = {}; 
+
+function parent_afficherMethodesPaiement() {
+    // 1. Récupération des données avec préfixe parent_
+    parent_tempPaymentData = {
+        nomEleve: document.getElementById("parent_nomEleve").value.trim(),
+        classe: document.getElementById("parent_classe").value.trim(),
+        section: document.getElementById("parent_selectSection").value,
+        service: document.getElementById("parent_typeFrais").value,
+        montant: document.getElementById("parent_montant").value,
+        email: document.getElementById("parent_emailParent").value.trim()
+    };
+
+    // 2. Validation
+    if(!parent_tempPaymentData.nomEleve || !parent_tempPaymentData.section || !parent_tempPaymentData.service || !parent_tempPaymentData.montant || !parent_tempPaymentData.email) {
+        alert("Veuillez remplir tous les champs.");
+        return;
+    }
+
+    // 3. Injection sécurisée avec un design amélioré
+    var divContainer = document.getElementById("parent_methodesPaiement");
+    divContainer.innerHTML = `
+        <div style="max-width: 500px; margin: 0 auto; padding: 20px; border: 2px solid #e67e22; background-color: #fff3e0; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-family: sans-serif; text-align: left;">
+            <h4 style="color: #d35400; margin-top: 0; font-size: 16px;">⚠️ Important : Paiement à distance</h4>
+            <p style="font-size: 14px; color: #555; line-height: 1.4;">Veuillez impérativement contacter la caisse de l'école avant d'initier la transaction.</p>
+            <button id="btnConfirmerCaisse" style="background: #e67e22; color: white; padding: 12px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold; font-size: 15px; transition: background 0.2s;">
+                J'ai contacté la caisse, voir les méthodes
+            </button>
+        </div>
+    `;
+
+    document.getElementById("btnConfirmerCaisse").addEventListener("click", function() {
+        if (typeof parent_afficherLesBanques === "function") {
+            parent_afficherLesBanques();
+        } else {
+            console.warn("La fonction parent_afficherLesBanques n'est pas encore définie.");
+        }
+    });
+}
+
+async function parent_afficherLesBanques() {
+    let btn = document.getElementById("btnConfirmerCaisse");
+    if (btn) { btn.disabled = true; btn.innerText = "Chargement..."; }
+
+    const res = await apiCall("getPaiementConfig");
+    const config = res.data || res;
+
+    let divContainer = document.getElementById("parent_methodesPaiement");
+    
+    if (config && config.banques) {
+        divContainer.innerHTML = `
+            <div style="max-width: 500px; margin: 15px auto; padding: 20px; border: 1px solid #ced4da; border-radius: 8px; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-family: sans-serif; text-align: left;">
+                <p style="margin-top: 0; font-size: 15px; color: #2c3e50; border-bottom: 1px solid #e9ecef; padding-bottom: 10px;">
+                    <strong>Paiement pour :</strong> ${parent_tempPaymentData.nomEleve} (<span style="color: #27ae60; font-weight: bold;">${parent_tempPaymentData.montant} $</span>)
+                </p>
+                <p style="font-size: 14px; color: #6c757d; margin-bottom: 15px;">Choisissez votre méthode de paiement :</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="card" onclick="parent_validerEtPayer('Equity BCDC', '${config.banques.equity.lien}')" style="padding: 12px 15px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: #f8f9fa; transition: background 0.2s; font-weight: 500;">🏦 Equity BCDC</div>
+                    <div class="card" onclick="parent_validerEtPayer('TMB', '${config.banques.tmb.lien}')" style="padding: 12px 15px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: #f8f9fa; transition: background 0.2s; font-weight: 500;">🏦 TMB</div>
+                    <div class="card" onclick="parent_validerEtPayer('Rawabank', '${config.banques.rawbank.lien}')" style="padding: 12px 15px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: #f8f9fa; transition: background 0.2s; font-weight: 500;">🏦 Rawabank</div>
+                    <div class="card" onclick="parent_afficherDetailsMobile('Airtel Money', '${config.mobile.airtel.lien}')" style="padding: 12px 15px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: #f8f9fa; transition: background 0.2s; font-weight: 500;">📱 Airtel Money</div>
+                    <div class="card" onclick="parent_afficherDetailsMobile('M-Pesa', '${config.mobile.mpesa.lien}')" style="padding: 12px 15px; border: 1px solid #ced4da; border-radius: 6px; cursor: pointer; background: #f8f9fa; transition: background 0.2s; font-weight: 500;">📱 M-Pesa</div>
+                </div>
+
+                <div id="parent_paiementDetails"></div>
+            </div>
+        `;
+    } else {
+        alert("Erreur de chargement de la configuration des paiements.");
+        if (btn) { btn.disabled = false; btn.innerText = "Réessayer"; }
+    }
+}
+
+// --- FONCTIONS DE VALIDATION DU PAIEMENT (MODULE PARENT) ---
+
+function parent_validerEtPayer(banque, lien) {
+    if (confirm("Vous allez être redirigé vers le site de paiement de " + banque + ". Continuer ?")) {
+        window.open(lien, '_blank');
+    }
+}
+
+/**
+ * Affiche les détails pour les paiements mobiles (Version Parent)
+ */
+function parent_afficherDetailsMobile(service, lien) {
+    var detailsDiv = document.getElementById("parent_paiementDetails");
+    if (detailsDiv) {
+        detailsDiv.innerHTML = `
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #27ae60; border-radius: 4px; border: 1px solid #e9ecef;">
+                <p style="margin-top: 0; color: #2c3e50; font-size: 14px;">Envoyez <strong>${parent_tempPaymentData.montant} $</strong> via <strong>${service}</strong>.</p>
+                <button onclick="parent_validerMobile('${service}', '${lien}')" style="background: #27ae60; color: white; padding: 10px 15px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 14px; transition: background 0.2s;">
+                    Confirmer le transfert
+                </button>
+            </div>
+        `;
+    }
+}
+/**
+ * Valide l'enregistrement et force l'ouverture du lien bancaire
+ */
+async function parent_validerEtPayer(nomBanque, lien) {
+    if (!parent_tempPaymentData) return alert("Erreur : Données introuvables.");
+    
+    if (!confirm("Vous allez être redirigé vers le site de paiement de " + nomBanque + ". Continuer ?")) return;
+    
+    let finalData = { ...parent_tempPaymentData };
+    finalData.service += " (via " + nomBanque + ")";
+    
+    const res = await apiCall("enregistrerPreuvePaiement", finalData);
+
+    if (res.success) {
+        alert(res.message || "Paiement enregistré avec succès !");
+        window.open(lien, '_blank');
+    } else {
+        alert("Erreur : " + (res.message || "Une erreur technique est survenue."));
+    }
+}
+
+/**
+ * Affiche les détails pour les paiements mobiles
+ */
+function parent_afficherDetailsMobile(service, lien) {
+    var detailsDiv = document.getElementById("parent_paiementDetails");
+    if (detailsDiv) {
+        detailsDiv.innerHTML = `
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #e67e22; border-radius: 4px; border: 1px solid #e9ecef; font-family: sans-serif; text-align: left;">
+                <p style="margin-top: 0; color: #2c3e50; font-size: 14px;">Envoyez <strong>${parent_tempPaymentData.montant} $</strong> via <strong>${service}</strong>.</p>
+                <button onclick="parent_validerMobile('${service}', '${lien}')" style="background: #e67e22; color: white; padding: 10px 15px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 14px; transition: background 0.2s;">
+                    Confirmer le transfert
+                </button>
+            </div>
+        `;
+    }
+}
+/**
+ * Valide l'enregistrement pour le mobile money et affiche un lien cliquable
+ */
+async function parent_validerMobile(service, lien) {
+    let finalData = { ...parent_tempPaymentData };
+    finalData.service += " (via " + service + ")";
+    
+    // Indication visuelle de traitement
+    var btn = event.target;
+    btn.innerText = "Enregistrement en cours...";
+    btn.disabled = true;
+    btn.style.opacity = "0.7";
+
+    const res = await apiCall("enregistrerPreuvePaiement", finalData);
+
+    var detailsDiv = document.getElementById("parent_paiementDetails");
+
+    if (res.success) {
+        detailsDiv.innerHTML = `
+            <div style="margin-top: 20px; padding: 20px; background: #e8f5e9; border: 1px solid #27ae60; text-align: center; border-radius: 8px; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <p style="color: #27ae60; font-weight: bold; margin-top: 0; font-size: 15px;">✅ ${res.message || "Paiement enregistré avec succès !"}</p>
+                <a href="${lien}" target="_blank" style="display: inline-block; padding: 12px 25px; background: #27ae60; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 15px; transition: background 0.2s; margin-top: 5px;">
+                    👉 Cliquer ici pour payer avec ${service}
+                </a>
+            </div>
+        `;
+    } else {
+        alert(res.message || "Une erreur est survenue.");
+        btn.innerText = "Confirmer le transfert";
+        btn.disabled = false;
+        btn.style.opacity = "1";
+    }
+}
+
+/**
+ * BULLETIN
+ */
+function loadResultatsScolaires() {
+  document.getElementById("content").innerHTML = `
+    <div style="max-width: 500px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
+        <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">🎓 Téléchargement Bulletin</h3>
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Section :</label>
+            <select id="selectSection" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; background: #f8f9fa; font-size: 14px;">
+                <option value="">-- Choisir la section --</option>
+                <option value="MATERNELLE">Maternelle</option>
+                <option value="PRIMAIRE">Primaire</option>
+                <option value="SECONDAIRE">Secondaire</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Nom complet de l'élève :</label>
+            <input type="text" id="nomEnfant" placeholder="Ex: Sakina Nondo" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+        </div>
+        
+        <button id="btnChercher" onclick="chercherBulletin()" style="width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+            Rechercher le bulletin
+        </button>
+
+        <div id="resultatZone" style="margin-top: 20px;"></div>
+    </div>
+  `;
+}
+
+async function chercherBulletin() {
+  const section = document.getElementById("selectSection").value;
+  const nomE = document.getElementById("nomEnfant").value.trim();
+  const btn = document.getElementById("btnChercher");
+
+  if (!section || !nomE) {
+    alert("Veuillez choisir une section et entrer le nom complet de l'élève.");
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerText = "Recherche en cours...";
+  btn.style.opacity = "0.7";
+
+  // Vérification côté serveur via apiCall
+  const res = await apiCall("verifierBulletinSimple", { nomEnfant: nomE, section: section });
+  
+  btn.disabled = false;
+  btn.innerText = "Rechercher le bulletin";
+  btn.style.opacity = "1";
+
+  const resultatZone = document.getElementById("resultatZone");
+
+  if (res && res.trouve) {
+    resultatZone.innerHTML = `
+      <div style="padding: 20px; border: 1px solid #c3e6cb; background: #d4edda; border-radius: 8px; color: #155724; font-family: sans-serif; text-align: center;">
+        <p style="margin: 0 0 10px 0; font-size: 16px; font-weight: bold;">
+          ✅ Bulletin disponible
+        </p>
+        <p style="margin: 0 0 15px 0; font-size: 14px;">
+          Votre bulletin est prêt. Cliquez sur le lien ci-dessous pour le télécharger.
+        </p>
+        <a href="${res.lien}" target="_blank" style="display: inline-block; padding: 10px 20px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 15px; font-weight: bold;">
+          Télécharger le bulletin
+        </a>
+      </div>
+    `;
+  } else {
+    resultatZone.innerHTML = `
+      <div style="padding: 20px; border: 1px solid #f5c6cb; background: #fff3f3; border-radius: 8px; color: #721c24; font-family: sans-serif; text-align: left;">
+        <p style="margin-top: 0; font-weight: bold; font-size: 16px;">Résultat indisponible</p>
+        <p style="font-size: 14px; line-height: 1.4;">
+          Le bulletin de <strong>${nomE}</strong> n'est actuellement pas disponible pour consultation.
+        </p>
+        <p style="font-size: 14px; line-height: 1.4;">
+          Nous vous invitons à prendre contact avec la caisse de l'École Internationale Enfants du Monde afin d'obtenir les informations nécessaires concernant votre dossier.
+        </p>
+        <p style="margin-bottom: 0; font-size: 13px; color: #6c757d; font-style: italic;">
+          Merci de votre compréhension.
+        </p>
+      </div>
+    `;
+  }
+}
+
+async function envoyerSuggestionParent(event) {
+    const textarea = document.querySelector("textarea");
+    const btn = (event && event.target) ? event.target : document.querySelector(".content-area button");
+    const suggestion = textarea ? textarea.value.trim() : "";
+    const userEmail = sessionStorage.getItem("userEmail") || "";
+
+    if (!suggestion) {
+        alert("Veuillez écrire une suggestion avant d'envoyer.");
+        return;
+    }
+
+    if (btn) {
+        btn.disabled = true;
+        btn.innerText = "Envoi en cours...";
+        btn.style.opacity = "0.7";
+    }
+
+    const res = await apiCall("parent_sendSuggestion", { suggestion, userEmail });
+
+    if (btn) {
+        btn.disabled = false;
+        btn.innerText = "Envoyer";
+        btn.style.opacity = "1";
+    }
+
+    if (res && res.success) {
+        alert("Votre suggestion a bien été envoyée à la Direction !");
+        if (textarea) textarea.value = "";
+    } else {
+        alert("Erreur : " + (res && res.message ? res.message : "Erreur inconnue"));
+    }
+}
+
+// ==========================================
+// MODULE CLIENT : GESTION DES NOTIFICATIONS
+// ==========================================
+
+// 1. Ouvrir / Fermer le panneau de notification et rafraîchir
+function toggleNotificationPanel() {
+  var panel = document.getElementById("notification-panel");
+  if (!panel) return;
+  
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+  
+  // Si le panneau s'ouvre, on actualise les données
+  if (panel.style.display === "block") {
+    loadParentNotifications();
+  }
+}
+
+// 2. Charger les notifications depuis Google Apps Script
+async function loadParentNotifications() {
+  var userEmail = sessionStorage.getItem("userEmail");
+  console.log("Email récupéré en session :", userEmail);
+
+  var badge = document.getElementById("notif-badge");
+  var listContainer = document.getElementById("notification-list");
+  
+  if (!listContainer) return;
+
+  if (!userEmail) {
+    listContainer.innerHTML = '<p style="font-size: 0.9rem; color: #e74c3c; text-align: center; padding: 15px; font-family: sans-serif;">Erreur : Aucun utilisateur connecté</p>';
+    return; 
+  }
+
+  // Appel via apiCall
+  const res = await apiCall("getParentNotifications", { userEmail });
+  console.log("Notifications reçues du serveur :", res);
+
+  const notifs = res.data || res;
+
+  if (!Array.isArray(notifs) || notifs.length === 0) {
+    if (badge) badge.style.display = "none";
+    listContainer.innerHTML = '<p style="font-size: 0.9rem; color: #777; text-align: center; padding: 15px; font-family: sans-serif;">Aucune notification</p>';
+    return;
+  }
+
+  var unreadCount = notifs.filter(n => n.statut === "NON_LU").length;
+  
+  if (badge) {
+    if (unreadCount > 0) {
+      badge.style.display = "inline-block";
+      badge.innerText = unreadCount;
+    } else {
+      badge.style.display = "none";
+    }
+  }
+
+  let html = "";
+  notifs.forEach(n => {
+    let bgStyle = n.statut === "NON_LU" 
+      ? "background-color: #f0f8ff; font-weight: 600; border-left: 4px solid #3498db;" 
+      : "background-color: #ffffff; font-weight: normal; border-left: 4px solid #dcdde1;";
+      
+    html += `
+      <div style="padding: 12px 14px; margin-bottom: 8px; border-radius: 6px; border: 1px solid #e1e8ed; ${bgStyle} color: #2c3e50; font-size: 0.9rem; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.2s ease; font-family: sans-serif; text-align: left;" 
+           onmouseover="this.style.boxShadow='0 3px 6px rgba(0,0,0,0.1)';" 
+           onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,0.05)';" 
+           onclick="markAsRead(${n.id})">
+        <div style="line-height: 1.4;">${n.message}</div>
+        <div style="font-size: 0.75rem; color: #888; text-align: right; margin-top: 6px;">📅 ${n.date}</div>
+      </div>
+    `;
+  });
+  listContainer.innerHTML = html;
+}
+
+// 3. Marquer une notification comme lue au clic
+async function markAsRead(rowId) {
+  const res = await apiCall("markNotificationAsRead", { rowId });
+
+  if (res && res.success) {
+    loadParentNotifications(); // Actualise l'affichage après modification
+  } else {
+    console.error("Erreur lors de la mise à jour de la notification :", res ? res.message : "Erreur inconnue");
+  }
+}
+  </script>
+</body>
+</html>
