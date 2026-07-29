@@ -470,64 +470,52 @@ Grâce à cette plateforme, l'École Internationale Enfants du Monde centralise 
     <div id="content" class="content-area"></div>
 
 </div>
-
- <script>
-  let pageActuelle = "";
+<script>
+let pageActuelle = "";
+  let roleActuel = ""; // Variable pour stocker le rôle actif
 
   const URL_API = "https://script.google.com/macros/s/AKfycbxjxdKfgbLAiOlcC9cXcc8AqTJ0euQJBrJZH3cGXKQ8jp276sYm1p5-OR11YgSUVpWx/exec";
 
   async function apiCall(action, payload = {}) {
-  try {
-    const response = await fetch(URL_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8" // Évite les blocages CORS avec Google Apps Script
-      },
-      body: JSON.stringify({ action: action, ...payload })
-    });
-    
-    return await response.json();
-  } catch (error) {
-    console.error("Erreur réseau :", error);
-    return { success: false, message: "Erreur de connexion au serveur." };
+    try {
+      const response = await fetch(URL_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8" // Évite les blocages CORS avec Google Apps Script
+        },
+        body: JSON.stringify({ action: action, ...payload })
+      });
+      
+      return await response.json();
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+      return { success: false, message: "Erreur de connexion au serveur." };
+    }
   }
-}
+
   async function login() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const msg = document.getElementById("msg");
     
-    if (!email || !password) return msg.innerText = "Champs requis.";
+    if (!email || !password) {
+      msg.innerText = "Champs requis.";
+      return;
+    }
     msg.innerText = "Connexion...";
     
-    try {
-      const response = await fetch(urlAppScript, {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify({
-          action: "login",
-          email: email,
-          password: password
-        })
-      });
+    // Utilisation de apiCall au lieu d'un fetch brut avec urlAppScript (qui n'existe pas)
+    const res = await apiCall("login", { email: email, password: password });
 
-      const res = await response.json();
-
-      if (res.success) {
-        roleActuel = res.role;
-        
-        // 🔑 On mémorise l'e-mail dans le navigateur pour le module de notification
-        sessionStorage.setItem("userEmail", email); 
-        
-        loadDashboard(res.role);
-      } else {
-        msg.innerText = res.message || "Identifiants incorrects.";
-      }
-    } catch (error) {
-      console.error("Erreur de connexion :", error);
-      msg.innerText = "Erreur de communication avec le serveur.";
+    if (res && res.success) {
+      roleActuel = res.role;
+      
+      // 🔑 On mémorise l'e-mail dans le navigateur pour le module de notification
+      sessionStorage.setItem("userEmail", email); 
+      
+      loadDashboard(res.role);
+    } else {
+      msg.innerText = (res && res.message) ? res.message : "Identifiants incorrects.";
     }
   }
 
@@ -614,12 +602,8 @@ Grâce à cette plateforme, l'École Internationale Enfants du Monde centralise 
     // 🧹 Nettoyage de l'e-mail en session à la déconnexion
     sessionStorage.removeItem("userEmail");
     
-    // Appel optionnel si géré par fetch, ou conservé si hybride
-    fetch(urlAppScript, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify({ action: "logout" })
-    }).catch(err => console.log(err));
+    // Utilisation propre de apiCall pour la déconnexion
+    apiCall("logout").catch(err => console.log(err));
   }
 /* --- LOGIQUE CAISSE OPTIMISÉE --- */
 async function openCaisse() {
