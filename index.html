@@ -477,21 +477,25 @@ let pageActuelle = "";
   const URL_API = "https://script.google.com/macros/s/AKfycbxjxdKfgbLAiOlcC9cXcc8AqTJ0euQJBrJZH3cGXKQ8jp276sYm1p5-OR11YgSUVpWx/exec";
 
   async function apiCall(action, payload = {}) {
+  try {
+    const response = await fetch(URL_API, {
+      method: "POST",
+      // On retire les headers "Content-Type" stricts qui forcent le CORS preflight de Google
+      body: JSON.stringify({ action: action, ...payload })
+    });
+    
+    const text = await response.text();
     try {
-      const response = await fetch(URL_API, {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8" // Évite les blocages CORS avec Google Apps Script
-        },
-        body: JSON.stringify({ action: action, ...payload })
-      });
-      
-      return await response.json();
-    } catch (error) {
-      console.error("Erreur réseau :", error);
-      return { success: false, message: "Erreur de connexion au serveur." };
+      return JSON.parse(text);
+    } catch (e) {
+      console.error("Réponse non-JSON du serveur :", text);
+      return { success: false, message: "Erreur de format du serveur" };
     }
+  } catch (error) {
+    console.error("Erreur réseau :", error);
+    return { success: false, message: "Erreur de connexion au serveur." };
   }
+}
 
   async function login() {
     const email = document.getElementById("email").value.trim();
