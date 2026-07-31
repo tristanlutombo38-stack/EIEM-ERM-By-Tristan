@@ -471,85 +471,61 @@ Grâce à cette plateforme, l'École Internationale Enfants du Monde centralise 
 
 </div>
 <script>
-let pageActuelle = "";
-  let roleActuel = ""; // Variable pour stocker le rôle actif
+const URL_API = "https://script.google.com/macros/s/AKfycbxjxdKfgbLAiOlcC9cXcc8AqTJ0euQJBrJZH3cGXKQ8jp276sYm1p5-OR11YgSUVpWx/exec";
 
-  const URL_API = "https://script.google.com/macros/s/AKfycbxjxdKfgbLAiOlcC9cXcc8AqTJ0euQJBrJZH3cGXKQ8jp276sYm1p5-OR11YgSUVpWx/exec";
-
-  async function apiCall(action, payload = {}) {
+async function apiCall(action, payload = {}) {
   try {
+    console.log(`Envoi de la requête [${action}] vers l'API...`, payload);
+    
     const response = await fetch(URL_API, {
       method: "POST",
-      // On retire les headers "Content-Type" stricts qui forcent le CORS preflight de Google
       body: JSON.stringify({ action: action, ...payload })
     });
     
     const text = await response.text();
+    console.log("Texte brut reçu du serveur :", text); // 🔍 TRÈS IMPORTANT : Regardez ce qui s'affiche ici
+    
     try {
-      return JSON.parse(text);
+      const json = JSON.parse(text);
+      return json;
     } catch (e) {
-      console.error("Réponse non-JSON du serveur :", text);
-      return { success: false, message: "Erreur de format du serveur" };
+      console.error("Erreur : La réponse n'est pas du JSON valide.", text);
+      return { success: false, message: "Erreur de format du serveur (HTML reçu au lieu de JSON)" };
     }
   } catch (error) {
-    console.error("Erreur réseau :", error);
-    return { success: false, message: "Erreur de connexion au serveur." };
+    console.error("Erreur réseau critique :", error);
+    return { success: false, message: "Erreur de connexion au serveur (CORS ou Réseau)." };
   }
 }
 
-  async function login() {
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
+async function login() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
   const msg = document.getElementById("msg");
   
-  if (!emailInput || !passwordInput) {
-    console.error("Champs email ou password introuvables dans le HTML.");
-    return;
-  }
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
-  
   if (!email || !password) {
-    if (msg) msg.innerText = "Veuillez remplir tous les champs.";
+    msg.innerText = "Champs requis.";
     return;
   }
   
-  if (msg) msg.innerText = "Connexion en cours...";
+  msg.innerText = "Connexion en cours...";
   
-  // Appel de l'API via votre fonction apiCall existante
   const res = await apiCall("login", { email: email, password: password });
+  console.log("Résultat final interprété :", res);
 
-  console.log("Réponse reçue du serveur :", res); // Pour déboguer dans la console F12
-
-  // On vérifie si la connexion est un succès (gère { success: true } ou { status: "success" })
   if (res && (res.success === true || res.status === "success")) {
-    const role = (res.role || "PARENT").toUpperCase();
-    roleActuel = role;
-    
-    // Mémorisation de l'email et du rôle dans le navigateur
+    msg.innerText = "Succès ! Redirection...";
     sessionStorage.setItem("userEmail", email);
-    sessionStorage.setItem("userRole", role);
-    if (res.nom) {
-      sessionStorage.setItem("userName", res.nom);
-    }
-    
-    if (msg) msg.innerText = "Connexion réussie ! Redirection...";
-    
-    // Chargement du tableau de bord correspondant au rôle
+    sessionStorage.setItem("userRole", res.role);
     if (typeof loadDashboard === "function") {
-      loadDashboard(role);
+      loadDashboard(res.role);
     } else {
-      console.warn("La fonction loadDashboard n'est pas définie.");
+      alert("Connecté en tant que : " + res.role);
     }
-
   } else {
-    // Affichage propre du message d'erreur renvoyé par le serveur
-    const erreurMsg = (res && res.message) ? res.message : "Identifiants incorrects.";
-    if (msg) msg.innerText = erreurMsg;
+    msg.innerText = (res && res.message) ? res.message : "Identifiants incorrects.";
   }
 }
-
   /**
    * 1. Dashboard principal avec contrôle des accès par rôle
    */
