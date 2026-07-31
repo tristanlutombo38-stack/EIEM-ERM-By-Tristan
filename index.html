@@ -475,26 +475,27 @@ const URL_API = "https://script.google.com/macros/s/AKfycbxjxdKfgbLAiOlcC9cXcc8A
 
 async function apiCall(action, payload = {}) {
   try {
-    console.log(`Envoi de la requête [${action}] vers l'API...`, payload);
-    
-    const response = await fetch(URL_API, {
-      method: "POST",
-      body: JSON.stringify({ action: action, ...payload })
+    // On transforme l'appel POST en GET sécurisé via les paramètres URL (Évite les erreurs HTML de doPost)
+    const params = new URLSearchParams({
+      action: action,
+      data: JSON.stringify(payload)
+    });
+
+    const response = await fetch(`${URL_API}?${params.toString()}`, {
+      method: "GET"
     });
     
     const text = await response.text();
-    console.log("Texte brut reçu du serveur :", text); // 🔍 TRÈS IMPORTANT : Regardez ce qui s'affiche ici
     
     try {
-      const json = JSON.parse(text);
-      return json;
+      return JSON.parse(text);
     } catch (e) {
-      console.error("Erreur : La réponse n'est pas du JSON valide.", text);
-      return { success: false, message: "Erreur de format du serveur (HTML reçu au lieu de JSON)" };
+      console.error("Réponse non-JSON reçue :", text);
+      return { success: false, message: "Erreur de format du serveur (Vérifiez le déploiement)" };
     }
   } catch (error) {
-    console.error("Erreur réseau critique :", error);
-    return { success: false, message: "Erreur de connexion au serveur (CORS ou Réseau)." };
+    console.error("Erreur réseau :", error);
+    return { success: false, message: "Erreur de connexion au serveur." };
   }
 }
 
