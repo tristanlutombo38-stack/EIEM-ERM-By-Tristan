@@ -527,6 +527,7 @@ async function login() {
     msg.innerText = (res && res.message) ? res.message : "Identifiants incorrects.";
   }
 }
+
   /**
    * 1. Dashboard principal avec contrôle des accès par rôle
    */
@@ -566,11 +567,13 @@ async function login() {
     // Menu PARENT
     else if (role === "PARENT") {
         menu += `
+
             <div class="card" onclick="loadResultatsScolaires()">📊 Résultats Scolaires</div>
             <div class="card" onclick="loadActivitesScolaires()">🖼️ Activités Scolaires</div>
-            <div class="card" onclick="loadPaiementADistance()">💳 Payer à distance</div>
-            <div class="card" onclick="loadCommuniqueParent()">📢 Communiqués</div>
-            <div class="card" onclick="openSuggestion()">💬 Suggestion</div>`;
+            <div class="card" onclick="loadPaiementsParent()">💳 Paiements & Frais</div>
+            <div class="card" onclick="loadBulletinsParent()">🎓 Bulletins & Proclamation</div>
+            <div class="card" onclick="loadCommuniquesParent()">📢 Communiqués</div>
+            <div class="card" onclick="loadSuggestionsParent()">💡 Suggestions & Support</div>`;
     }
     // Menu AGENT
     else if (role === "AGENT") {
@@ -1123,57 +1126,6 @@ async function sendSug() {
     if (textarea) textarea.value = "";
   } else {
     alert("Erreur : " + (res && res.res ? res.res : "Erreur inconnue"));
-  }
-}
-
-/* --- MODULE AGENT - INTERFACE --- */
-async function loadDocsScolaires() {
-  pageActuelle = "loadDocsScolaires";
-  // On vide le contenu et on affiche le chargement
-  document.getElementById("content").innerHTML = `
-    <div style="max-width: 800px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: sans-serif;">
-      <h3 style="margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e9ecef; padding-bottom: 10px;">📂 Documents Scolaires</h3>
-      <div id='fileList' style="margin-top: 20px; color: #6c757d; font-style: italic;">Chargement en cours...</div>
-    </div>
-  `;
-  
-  const serverRes = await apiCall("agent_getDocs");
-  const res = serverRes.data || serverRes;
-  const fileListDiv = document.getElementById("fileList");
-
-  if (!fileListDiv) return;
-
-  if (res && res.success) {
-    if (res.data && res.data.length > 0) {
-      let html = `
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; background: #fff; font-size: 14px;">
-            <thead>
-              <tr style="background: #3498db; color: white;">
-                <th style="padding: 12px; text-align: left;">Nom</th>
-                <th style="padding: 12px; text-align: left;">Date</th>
-                <th style="padding: 12px; text-align: center;">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-      `;
-      res.data.forEach(f => {
-        html += `
-          <tr style="border-bottom: 1px solid #e9ecef;">
-            <td style="padding: 10px 12px; color: #2c3e50; font-weight: 500;">${f.name}</td>
-            <td style="padding: 10px 12px; color: #7f8c8d;">${f.date}</td>
-            <td style="padding: 10px 12px; text-align: center;">
-              <a href='${f.url}' target='_blank' style="display: inline-block; padding: 6px 12px; background: #27ae60; color: white; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 13px; transition: background 0.2s;">Télécharger</a>
-            </td>
-          </tr>
-        `;
-      });
-      fileListDiv.innerHTML = html + "</tbody></table></div>";
-    } else {
-      fileListDiv.innerHTML = "<p style='text-align: center; color: #7f8c8d; padding: 20px; margin: 0;'>Le dossier est vide.</p>";
-    }
-  } else {
-    fileListDiv.innerHTML = `<p style='color: #e67e22; background: #fef9e7; padding: 15px; border-radius: 6px; border: 1px solid #f9e79f; margin: 0; text-align: center;'>Info : ${res ? res.res : "Erreur inconnue"}</p>`;
   }
 }
 
